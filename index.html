@@ -170,21 +170,55 @@
             gap: 12px;
             margin-bottom: 20px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
-        .demo-input {
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             flex: 1;
             min-width: 200px;
-            padding: 10px 14px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
         }
 
-        .demo-input:focus {
+        .slider-group label {
+            font-weight: 600;
+            color: #4b5563;
+            min-width: 30px;
+        }
+
+        .slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: #e5e7eb;
             outline: none;
-            border-color: #10b981;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0f766e;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            color: #0f766e;
         }
 
         .demo-button {
@@ -211,6 +245,7 @@
             padding: 16px;
             min-height: 80px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 1.2em;
@@ -269,6 +304,21 @@
             border-color: #10b981;
         }
 
+        .user-answer-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .user-answer-input:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+
         .preset-pills {
             display: flex;
             gap: 8px;
@@ -312,20 +362,44 @@
             margin: 16px 0;
         }
 
-        .steps-container {
-            background: #f9fafb;
+        .feedback-box {
+            padding: 12px;
             border-radius: 8px;
-            padding: 16px;
-            margin-top: 16px;
+            margin-top: 12px;
         }
 
-        .step {
-            padding: 8px 0;
-            border-bottom: 1px solid #e5e7eb;
+        .feedback-box.match {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
         }
 
-        .step:last-child {
-            border-bottom: none;
+        .feedback-box.no-match {
+            background: #fed7aa;
+            border: 2px solid #fb923c;
+            color: #9a3412;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .secondary-button {
+            padding: 10px 20px;
+            background: #4b5563;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: #6b7280;
         }
 
         /* Complex Plane Canvas */
@@ -335,6 +409,19 @@
             padding: 24px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             margin-bottom: 20px;
+        }
+
+        .geometry-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .geometry-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         canvas {
@@ -377,35 +464,6 @@
             background: #6b7280;
         }
 
-        /* Form Toggle */
-        .form-toggle {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            background: white;
-            padding: 4px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .form-btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            color: #4b5563;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .form-btn.active {
-            background: #0f766e;
-            color: white;
-        }
-
         /* Info boxes */
         .info-box {
             background: #f0fffe;
@@ -416,6 +474,31 @@
         }
 
         .info-box h4 {
+            color: #0f766e;
+            margin-bottom: 8px;
+        }
+
+        .representation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .rep-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .rep-card:hover {
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .rep-card h4 {
             color: #0f766e;
             margin-bottom: 8px;
         }
@@ -458,7 +541,7 @@
         }
 
         /* Equation solver specific */
-        .equation-grid {
+        .equation-categories {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
@@ -466,22 +549,29 @@
         }
 
         @media (max-width: 768px) {
-            .equation-grid {
+            .equation-categories {
                 grid-template-columns: 1fr;
             }
         }
 
-        .roots-display {
+        .category-card {
             background: white;
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
 
-        .root-item {
-            padding: 12px;
+        .roots-display {
             background: #f9fafb;
             border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .root-item {
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
@@ -506,6 +596,10 @@
             
             .tab-button {
                 width: 100%;
+            }
+            
+            .geometry-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -538,39 +632,68 @@
             <!-- Concept Cards -->
             <div class="concept-cards">
                 <div class="concept-card">
-                    <h3>What is <span class="math">i</span>?</h3>
-                    <p>The imaginary unit <span class="math">i</span> is defined as the square root of -1.</p>
+                    <h3>The Imaginary Unit i</h3>
+                    <p>We define <strong>i</strong> as something whose square is -1:</p>
                     <div class="math-output" id="i-definition"></div>
-                    <p>This "impossible" number opens up a whole new world of mathematics!</p>
+                    <p>This "impossible" idea unlocks a whole new mathematical universe!</p>
                 </div>
 
                 <div class="concept-card">
                     <h3>Complex Numbers: a + bi</h3>
-                    <p>Every complex number has a real part (a) and an imaginary part (b).</p>
+                    <p>Every complex number combines real and imaginary parts:</p>
                     <div class="math-output" id="complex-form"></div>
-                    <p>They follow all the rules of arithmetic we know and love.</p>
+                    <p>They follow all arithmetic rules, always simplifying to this form.</p>
                 </div>
 
                 <div class="concept-card">
-                    <h3>Solving the Impossible</h3>
-                    <p>With complex numbers, every polynomial equation has a solution!</p>
-                    <div class="math-output" id="solving-example"></div>
-                    <p>No more "no solution" - everything becomes solvable.</p>
+                    <h3>Solving the Unsolvable</h3>
+                    <p>When the discriminant is negative, we use complex numbers:</p>
+                    <div class="math-output" id="discriminant-formula"></div>
+                    <p>Every quadratic now has solutions!</p>
                 </div>
             </div>
 
-            <!-- Interactive Demo -->
+            <!-- Interactive Demo 1: Factoring x² + c -->
             <div class="interactive-demo">
-                <h2>See the Magic: Factoring x² + 1</h2>
-                <p>Once impossible, now simple with complex numbers!</p>
+                <h2>Factoring x² + c</h2>
+                <p>See how complex numbers let us factor any quadratic, even when c is positive!</p>
                 
                 <div class="demo-controls">
-                    <input type="text" class="demo-input" id="poly-input" value="x^2 + 1" placeholder="Enter polynomial (e.g., x^2 + 1)">
-                    <button class="demo-button" onclick="factorPolynomial()">Factor</button>
+                    <div class="slider-group">
+                        <label>c =</label>
+                        <input type="range" class="slider" id="c-slider" min="-10" max="10" value="1" step="0.5">
+                        <span class="slider-value" id="c-value">1</span>
+                    </div>
                 </div>
                 
-                <div class="demo-result" id="factor-result">
+                <div class="demo-result">
                     <div id="factor-display"></div>
+                    <div id="factor-roots" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+
+            <!-- Interactive Demo 2: Solving ax² + bx + c = 0 -->
+            <div class="interactive-demo">
+                <h2>Solving ax² + bx + c = 0</h2>
+                <p>Adjust b and c to see how the discriminant affects the solutions:</p>
+                
+                <div class="demo-controls">
+                    <div class="slider-group">
+                        <label>b =</label>
+                        <input type="range" class="slider" id="b-slider" min="-10" max="10" value="2" step="0.5">
+                        <span class="slider-value" id="b-value">2</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>c =</label>
+                        <input type="range" class="slider" id="c2-slider" min="-10" max="10" value="5" step="0.5">
+                        <span class="slider-value" id="c2-value">5</span>
+                    </div>
+                </div>
+                
+                <div class="demo-result">
+                    <div id="quadratic-equation"></div>
+                    <div id="discriminant-display" style="margin-top: 10px;"></div>
+                    <div id="quadratic-roots" style="margin-top: 10px;"></div>
                 </div>
             </div>
 
@@ -580,14 +703,14 @@
                 
                 <div class="info-box">
                     <h4>1. Algebraic Perspective</h4>
-                    <p>Complex numbers extend our number system. Just as negative numbers let us solve x + 5 = 3, 
-                    complex numbers let us solve x² + 1 = 0. They complete our arithmetic, making every polynomial solvable.</p>
+                    <p>Complex numbers complete our number system. When the discriminant b² - 4ac is negative, 
+                    we write √(negative) as √(|negative|) · i. This lets us solve any quadratic equation!</p>
                 </div>
                 
                 <div class="info-box">
                     <h4>2. Geometric Perspective</h4>
-                    <p>Complex numbers are points on a 2D plane. Addition is translation, multiplication is rotation and scaling. 
-                    This geometric view reveals beautiful patterns and deep connections to trigonometry.</p>
+                    <p>Complex numbers are points on a 2D plane. Addition moves points, multiplication rotates and scales them. 
+                    This geometric view reveals beautiful patterns, especially in roots of unity.</p>
                 </div>
             </div>
 
@@ -609,15 +732,15 @@
         <div id="algebraic" class="tab-content">
             <div class="card">
                 <h2>Algebraic Explorer</h2>
-                <p>Transform any complex expression into standard form a + bi</p>
+                <p>Practice transforming complex expressions into standard form a + bi</p>
                 
                 <div class="disclaimer">
-                    ⚡ AI-powered simplification - The AI helper can make mistakes and may be temporarily unavailable during periods of high traffic
+                    ⚡ AI-powered checking - The AI helper can make mistakes and may be temporarily unavailable during periods of high traffic
                 </div>
             </div>
 
             <div class="expression-input-group">
-                <h3>Enter Complex Expression</h3>
+                <h3>Complex Expression</h3>
                 <input type="text" class="expression-input" id="complex-expression" 
                        placeholder="e.g., (2+3i)*(1-i) or (1+i)^3" 
                        value="(2+3i)*(1-i)">
@@ -631,22 +754,27 @@
                     <button class="preset-pill" onclick="setExpression('((2+i)*(3-2i))/(1+i)')">Complex</button>
                 </div>
                 
-                <button class="demo-button" onclick="simplifyExpression()">
-                    Simplify <span class="ai-status" id="ai-status" style="display:none;"><span class="loading-spinner"></span> AI working...</span>
-                </button>
+                <h4 style="margin-top: 20px;">Your Answer (in form a + bi):</h4>
+                <input type="text" class="user-answer-input" id="user-answer" 
+                       placeholder="Enter your answer, e.g., 5 + i or 3 - 2i">
+                
+                <div class="button-group">
+                    <button class="demo-button" onclick="checkAnswer()">
+                        Check Answer <span class="ai-status" id="ai-status" style="display:none;"><span class="loading-spinner"></span> Checking...</span>
+                    </button>
+                    <button class="secondary-button" onclick="challengeAI()" id="challenge-btn" style="display:none;">
+                        Challenge AI
+                    </button>
+                </div>
             </div>
 
             <div class="result-display" id="algebraic-result" style="display:none;">
-                <h3>Result</h3>
+                <h3>Feedback</h3>
+                <div id="feedback-content"></div>
                 <div class="math-output" id="simplified-result"></div>
-                
-                <div class="steps-container" id="steps-container" style="display:none;">
-                    <h4>Step-by-Step Solution</h4>
+                <div id="steps-container" style="display:none; margin-top: 16px;">
+                    <h4>Solution Steps</h4>
                     <div id="solution-steps"></div>
-                </div>
-                
-                <div style="margin-top: 20px;">
-                    <canvas id="result-plane" width="300" height="300"></canvas>
                 </div>
             </div>
         </div>
@@ -654,47 +782,61 @@
         <!-- Geometric View Tab -->
         <div id="geometric" class="tab-content">
             <div class="card">
-                <h2>Geometric View</h2>
-                <p>Visualize complex numbers as points and see operations as transformations</p>
-            </div>
-
-            <div class="plane-container">
-                <h3>Complex Plane</h3>
-                
-                <div class="form-toggle">
-                    <button class="form-btn active" onclick="setForm('rectangular')">Rectangular (a + bi)</button>
-                    <button class="form-btn" onclick="setForm('polar')">Polar (r∠θ)</button>
-                    <button class="form-btn" onclick="setForm('exponential')">Exponential (re^(iθ))</button>
-                </div>
-                
-                <canvas id="complex-plane" width="600" height="600"></canvas>
-                
-                <div class="plane-controls">
-                    <button class="control-button" onclick="addComplexNumber()">Add Number</button>
-                    <button class="control-button" onclick="multiplyNumbers()">Multiply Selected</button>
-                    <button class="control-button secondary" onclick="clearPlane()">Clear</button>
-                    <button class="control-button secondary" onclick="showUnitCircle()">Unit Circle</button>
-                </div>
-                
-                <div id="geometric-info" class="info-box" style="margin-top: 20px;">
-                    <h4>Current Selection</h4>
-                    <div id="selection-info">Click on the plane to add complex numbers</div>
+                <h2>Complex Number Representations</h2>
+                <div class="representation-cards">
+                    <div class="rep-card">
+                        <h4>Rectangular: a + bi</h4>
+                        <p>Best for addition and subtraction. Components add directly: (a+bi) + (c+di) = (a+c) + (b+d)i</p>
+                    </div>
+                    <div class="rep-card">
+                        <h4>Polar: r(cos θ + i sin θ)</h4>
+                        <p>Best for multiplication and division. Multiply magnitudes, add angles: r₁r₂∠(θ₁+θ₂)</p>
+                    </div>
+                    <div class="rep-card">
+                        <h4>Exponential: re^(iθ)</h4>
+                        <p>Most elegant for multiplication. Product rule becomes obvious: r₁e^(iθ₁) · r₂e^(iθ₂) = r₁r₂e^(i(θ₁+θ₂))</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="card">
-                <h3>Multiplication as Rotation</h3>
-                <p>Watch how multiplying complex numbers combines their angles and scales their magnitudes!</p>
-                
-                <div class="demo-controls">
-                    <input type="text" class="demo-input" id="mult-z1" value="1+i" placeholder="First number">
-                    <input type="text" class="demo-input" id="mult-z2" value="i" placeholder="Second number">
-                    <button class="demo-button" onclick="animateMultiplication()">Animate</button>
+            <div class="geometry-grid">
+                <!-- Addition/Subtraction Plane -->
+                <div class="plane-container">
+                    <h3>Addition & Subtraction</h3>
+                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 12px;">
+                        Addition is translation: we add components separately. Click to add numbers, then see their sum.
+                    </p>
+                    <canvas id="addition-plane" width="350" height="350"></canvas>
+                    <div class="plane-controls">
+                        <button class="control-button" onclick="addNumberToAdditionPlane()">Add Random</button>
+                        <button class="control-button" onclick="showAddition()">Show Sum</button>
+                        <button class="control-button secondary" onclick="clearAdditionPlane()">Clear</button>
+                    </div>
+                    <div id="addition-info" style="margin-top: 12px; text-align: center;"></div>
                 </div>
-                
-                <div id="mult-visualization" class="result-display" style="margin-top: 20px;">
-                    <!-- Animation will go here -->
+
+                <!-- Multiplication/Division Plane -->
+                <div class="plane-container">
+                    <h3>Multiplication & Division</h3>
+                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 12px;">
+                        Multiplication rotates and scales: angles add, magnitudes multiply. Click to add numbers.
+                    </p>
+                    <canvas id="multiplication-plane" width="350" height="350"></canvas>
+                    <div class="plane-controls">
+                        <button class="control-button" onclick="addNumberToMultPlane()">Add Random</button>
+                        <button class="control-button" onclick="showMultiplication()">Show Product</button>
+                        <button class="control-button secondary" onclick="clearMultPlane()">Clear</button>
+                    </div>
+                    <div id="mult-info" style="margin-top: 12px; text-align: center;"></div>
                 </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Key Insight: Why Different Forms?</h4>
+                <p>The rectangular form (a + bi) makes addition natural because we just add components. 
+                But for multiplication, the exponential form re^(iθ) reveals the true structure: 
+                multiplying by e^(iθ) is pure rotation by angle θ, and multiplying by r scales the magnitude. 
+                This is why complex multiplication creates spirals and rotations!</p>
             </div>
         </div>
 
@@ -702,47 +844,84 @@
         <div id="equations" class="tab-content">
             <div class="card">
                 <h2>Complex Equation Solver</h2>
-                <p>Solve equations with complex solutions and explore roots of unity</p>
+                <p>Explore two types of complex equations</p>
                 
                 <div class="disclaimer">
                     ⚡ AI-powered solver - The AI helper can make mistakes and may be temporarily unavailable during periods of high traffic
                 </div>
             </div>
 
-            <div class="expression-input-group">
-                <h3>Enter Equation</h3>
-                <input type="text" class="expression-input" id="equation-input" 
-                       placeholder="e.g., z^3 = 1 or z^2 + 2z + 5 = 0" 
-                       value="z^4 = 1">
-                
-                <div class="preset-pills">
-                    <button class="preset-pill" onclick="setEquation('z^3 = 1')">Cube Roots of Unity</button>
-                    <button class="preset-pill" onclick="setEquation('z^6 = 1')">6th Roots of Unity</button>
-                    <button class="preset-pill" onclick="setEquation('z^2 + 2z + 5 = 0')">Quadratic</button>
-                    <button class="preset-pill" onclick="setEquation('z^4 = 16')">Fourth Roots</button>
-                    <button class="preset-pill" onclick="setEquation('z^3 = -8')">Cube Roots of -8</button>
+            <div class="equation-categories">
+                <!-- z^n = c Category -->
+                <div class="category-card">
+                    <h3>Type 1: z^n = c</h3>
+                    <p>Find all nth roots of a complex number</p>
+                    
+                    <div style="margin-top: 16px;">
+                        <label>n = </label>
+                        <input type="number" id="n-value" value="4" min="2" max="12" style="width: 60px; padding: 6px; border: 2px solid #e5e7eb; border-radius: 6px;">
+                    </div>
+                    
+                    <div style="margin-top: 12px;">
+                        <label>c = </label>
+                        <input type="text" id="c-complex" placeholder="e.g., 1, -1, i, 2+2i" value="1" style="width: 150px; padding: 6px; border: 2px solid #e5e7eb; border-radius: 6px;">
+                    </div>
+                    
+                    <div class="preset-pills" style="margin-top: 12px;">
+                        <button class="preset-pill" onclick="setRootEquation(3, '1')">Cube roots of unity</button>
+                        <button class="preset-pill" onclick="setRootEquation(4, '1')">4th roots of unity</button>
+                        <button class="preset-pill" onclick="setRootEquation(6, '1')">6th roots of unity</button>
+                        <button class="preset-pill" onclick="setRootEquation(4, '16')">4th roots of 16</button>
+                        <button class="preset-pill" onclick="setRootEquation(3, '-8')">Cube roots of -8</button>
+                        <button class="preset-pill" onclick="setRootEquation(2, 'i')">Square roots of i</button>
+                    </div>
+                    
+                    <button class="demo-button" onclick="solveRootEquation()" style="margin-top: 16px; width: 100%;">
+                        Solve z^n = c <span class="ai-status" id="root-status" style="display:none;"><span class="loading-spinner"></span></span>
+                    </button>
+                    
+                    <div id="root-results" style="display:none;">
+                        <div class="roots-display">
+                            <h4>Solutions:</h4>
+                            <div id="root-list"></div>
+                        </div>
+                        <canvas id="root-plane" width="300" height="300" style="margin-top: 16px;"></canvas>
+                        <div class="info-box" style="margin-top: 16px;">
+                            <h4>Geometric Pattern</h4>
+                            <p id="root-pattern"></p>
+                        </div>
+                    </div>
                 </div>
-                
-                <button class="demo-button" onclick="solveEquation()">
-                    Solve <span class="ai-status" id="solver-status" style="display:none;"><span class="loading-spinner"></span> AI solving...</span>
-                </button>
-            </div>
 
-            <div class="equation-grid" id="equation-results" style="display:none;">
-                <div class="roots-display">
-                    <h3>Solutions</h3>
-                    <div id="roots-list"></div>
+                <!-- General Polynomial Category -->
+                <div class="category-card">
+                    <h3>Type 2: General Polynomials</h3>
+                    <p>Solve any polynomial equation</p>
+                    
+                    <div style="margin-top: 16px;">
+                        <input type="text" id="poly-equation" placeholder="e.g., z^2 + 2z + 5 = 0" value="z^2 + 2z + 5 = 0" 
+                               style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 6px; font-family: 'Courier New', monospace;">
+                    </div>
+                    
+                    <div class="preset-pills" style="margin-top: 12px;">
+                        <button class="preset-pill" onclick="setPolyEquation('z^2 + 2z + 5 = 0')">Quadratic</button>
+                        <button class="preset-pill" onclick="setPolyEquation('z^3 - 1 = 0')">Cubic</button>
+                        <button class="preset-pill" onclick="setPolyEquation('z^2 + 4z + 13 = 0')">Another Quadratic</button>
+                        <button class="preset-pill" onclick="setPolyEquation('z^4 - 16 = 0')">Quartic</button>
+                    </div>
+                    
+                    <button class="demo-button" onclick="solvePolynomial()" style="margin-top: 16px; width: 100%;">
+                        Solve Polynomial <span class="ai-status" id="poly-status" style="display:none;"><span class="loading-spinner"></span></span>
+                    </button>
+                    
+                    <div id="poly-results" style="display:none;">
+                        <div class="roots-display">
+                            <h4>Solutions:</h4>
+                            <div id="poly-list"></div>
+                        </div>
+                        <canvas id="poly-plane" width="300" height="300" style="margin-top: 16px;"></canvas>
+                    </div>
                 </div>
-                
-                <div class="plane-container">
-                    <h3>Roots on Complex Plane</h3>
-                    <canvas id="roots-plane" width="400" height="400"></canvas>
-                </div>
-            </div>
-            
-            <div class="info-box" id="equation-explanation" style="display:none; margin-top: 20px;">
-                <h4>Understanding the Pattern</h4>
-                <div id="pattern-explanation"></div>
             </div>
         </div>
     </div>
@@ -750,14 +929,13 @@
     <script>
         // Global state
         let currentTab = 'introduction';
-        let currentForm = 'rectangular';
-        let complexNumbers = [];
-        let selectedNumbers = [];
+        let additionNumbers = [];
+        let multiplicationNumbers = [];
         
-        // Initialize KaTeX renders
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Render initial math
-            katex.render("i = \\sqrt{-1}", document.getElementById('i-definition'), {
+            // Render initial math formulas
+            katex.render("i^2 = -1", document.getElementById('i-definition'), {
                 displayMode: true,
                 throwOnError: false
             });
@@ -767,18 +945,29 @@
                 throwOnError: false
             });
             
-            katex.render("x^2 + 1 = (x + i)(x - i)", document.getElementById('solving-example'), {
+            katex.render("\\text{When } b^2 - 4ac < 0: \\quad \\sqrt{b^2 - 4ac} = \\sqrt{|b^2 - 4ac|} \\cdot i", 
+                document.getElementById('discriminant-formula'), {
                 displayMode: true,
                 throwOnError: false
             });
             
+            // Initialize sliders
+            updateFactoring();
+            updateQuadratic();
+            
+            // Add slider listeners
+            document.getElementById('c-slider').addEventListener('input', updateFactoring);
+            document.getElementById('b-slider').addEventListener('input', updateQuadratic);
+            document.getElementById('c2-slider').addEventListener('input', updateQuadratic);
+            
             // Initialize canvases
-            initializeGeometricPlane();
+            if (currentTab === 'geometric') {
+                initGeometricPlanes();
+            }
         });
 
         // Tab switching
         function switchTab(tabName) {
-            // Update buttons
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.tab === tabName) {
@@ -786,7 +975,6 @@
                 }
             });
             
-            // Update content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
@@ -794,9 +982,8 @@
             
             currentTab = tabName;
             
-            // Initialize specific tab features if needed
             if (tabName === 'geometric') {
-                drawComplexPlane();
+                setTimeout(() => initGeometricPlanes(), 100);
             }
         }
 
@@ -843,24 +1030,93 @@
         }
 
         // Introduction tab functions
-        function factorPolynomial() {
-            const input = document.getElementById('poly-input').value;
-            const display = document.getElementById('factor-display');
+        function updateFactoring() {
+            const c = parseFloat(document.getElementById('c-slider').value);
+            document.getElementById('c-value').textContent = c;
             
-            // Simple factoring for demo
-            if (input.toLowerCase().includes('x^2') && input.includes('1')) {
-                katex.render("x^2 + 1 = (x + i)(x - i)", display, {
-                    displayMode: true,
-                    throwOnError: false
-                });
-            } else if (input.toLowerCase().includes('x^2') && input.includes('4')) {
-                katex.render("x^2 + 4 = (x + 2i)(x - 2i)", display, {
-                    displayMode: true,
-                    throwOnError: false
-                });
+            const factorDisplay = document.getElementById('factor-display');
+            const rootsDisplay = document.getElementById('factor-roots');
+            
+            let factorLatex, rootsLatex;
+            
+            if (c > 0) {
+                const root = Math.sqrt(c);
+                factorLatex = `x^2 + ${c} = (x + ${root.toFixed(2)}i)(x - ${root.toFixed(2)}i)`;
+                rootsLatex = `\\text{Roots: } x = \\pm ${root.toFixed(2)}i`;
+            } else if (c < 0) {
+                const root = Math.sqrt(-c);
+                factorLatex = `x^2 ${c} = (x + ${root.toFixed(2)})(x - ${root.toFixed(2)})`;
+                rootsLatex = `\\text{Roots: } x = \\pm ${root.toFixed(2)}`;
             } else {
-                display.innerHTML = "Try x² + 1 or x² + 4 to see the factorization!";
+                factorLatex = `x^2 = x \\cdot x`;
+                rootsLatex = `\\text{Root: } x = 0 \\text{ (double root)}`;
             }
+            
+            katex.render(factorLatex, factorDisplay, {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            katex.render(rootsLatex, rootsDisplay, {
+                displayMode: false,
+                throwOnError: false
+            });
+        }
+
+        function updateQuadratic() {
+            const b = parseFloat(document.getElementById('b-slider').value);
+            const c = parseFloat(document.getElementById('c2-slider').value);
+            document.getElementById('b-value').textContent = b;
+            document.getElementById('c2-value').textContent = c;
+            
+            const equationDisplay = document.getElementById('quadratic-equation');
+            const discriminantDisplay = document.getElementById('discriminant-display');
+            const rootsDisplay = document.getElementById('quadratic-roots');
+            
+            // Display equation
+            const eqLatex = `x^2 ${b >= 0 ? '+' : ''} ${b}x ${c >= 0 ? '+' : ''} ${c} = 0`;
+            katex.render(eqLatex, equationDisplay, {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            // Calculate discriminant
+            const disc = b * b - 4 * c;
+            let discLatex = `\\text{Discriminant: } b^2 - 4ac = ${b}^2 - 4(${c}) = ${disc.toFixed(2)}`;
+            
+            if (disc < 0) {
+                discLatex += ` < 0 \\text{ (complex roots)}`;
+            } else if (disc > 0) {
+                discLatex += ` > 0 \\text{ (real roots)}`;
+            } else {
+                discLatex += ` = 0 \\text{ (repeated root)}`;
+            }
+            
+            katex.render(discLatex, discriminantDisplay, {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            // Calculate roots
+            let rootsLatex;
+            if (disc < 0) {
+                const realPart = -b / 2;
+                const imagPart = Math.sqrt(-disc) / 2;
+                rootsLatex = `x = \\frac{-${b} \\pm \\sqrt{${disc.toFixed(2)}}}{2} = \\frac{-${b} \\pm ${imagPart.toFixed(2)}i}{2} = ${realPart.toFixed(2)} \\pm ${imagPart.toFixed(2)}i`;
+            } else if (disc > 0) {
+                const sqrtDisc = Math.sqrt(disc);
+                const root1 = (-b + sqrtDisc) / 2;
+                const root2 = (-b - sqrtDisc) / 2;
+                rootsLatex = `x = \\frac{-${b} \\pm \\sqrt{${disc.toFixed(2)}}}{2} = ${root1.toFixed(2)}, ${root2.toFixed(2)}`;
+            } else {
+                const root = -b / 2;
+                rootsLatex = `x = \\frac{-${b}}{2} = ${root.toFixed(2)}`;
+            }
+            
+            katex.render(rootsLatex, rootsDisplay, {
+                displayMode: false,
+                throwOnError: false
+            });
         }
 
         // Algebraic Explorer functions
@@ -868,87 +1124,153 @@
             document.getElementById('complex-expression').value = expr;
         }
 
-        async function simplifyExpression() {
+        async function checkAnswer() {
             const expression = document.getElementById('complex-expression').value;
+            const userAnswer = document.getElementById('user-answer').value;
             const statusEl = document.getElementById('ai-status');
             const resultEl = document.getElementById('algebraic-result');
-            const simplifiedEl = document.getElementById('simplified-result');
-            const stepsEl = document.getElementById('solution-steps');
-            const stepsContainer = document.getElementById('steps-container');
+            const feedbackEl = document.getElementById('feedback-content');
+            const challengeBtn = document.getElementById('challenge-btn');
             
-            if (!expression) {
-                alert('Please enter an expression');
+            if (!expression || !userAnswer) {
+                alert('Please enter both an expression and your answer');
                 return;
             }
             
             statusEl.style.display = 'inline-flex';
             
-            const prompt = `Simplify the complex number expression: ${expression}
+            const prompt = `Check if the user's simplification is correct.
             
-            Provide the result in the form a + bi (or a - bi if b is negative).
-            Also provide step-by-step solution.
+            Expression: ${expression}
+            User's answer: ${userAnswer}
+            
+            First, simplify the expression to the form a + bi.
+            Then check if the user's answer matches.
             
             Format your response as JSON:
             {
-                "result": "the simplified form a + bi",
-                "real": numerical_value,
-                "imaginary": numerical_value,
+                "correct_answer": "the correct a + bi form",
+                "user_answer_matches": true/false,
+                "feedback": "constructive feedback message",
                 "steps": ["step 1", "step 2", ...]
             }
             
-            Be precise with the calculations. If the result is a real number, write it as "a + 0i".
-            If it's purely imaginary, write it as "0 + bi".`;
+            Be encouraging and constructive. If answers don't match, explain kindly.`;
             
             try {
                 const response = await callAI(prompt);
                 const data = JSON.parse(response);
                 
-                // Display result
-                katex.render(data.result, simplifiedEl, {
-                    displayMode: true,
-                    throwOnError: false
-                });
+                // Create feedback
+                const feedbackBox = document.createElement('div');
+                feedbackBox.className = data.user_answer_matches ? 'feedback-box match' : 'feedback-box no-match';
                 
-                // Display steps
-                if (data.steps && data.steps.length > 0) {
+                if (data.user_answer_matches) {
+                    feedbackBox.innerHTML = `
+                        <strong>Great work!</strong> Your answer matches the correct simplification.
+                        <div style="margin-top: 8px;">${data.feedback}</div>
+                    `;
+                    challengeBtn.style.display = 'none';
+                } else {
+                    feedbackBox.innerHTML = `
+                        <strong>The answers don't quite match.</strong> 
+                        <div style="margin-top: 8px;">${data.feedback}</div>
+                        <div style="margin-top: 8px;">The expression simplifies to: <strong>${data.correct_answer}</strong></div>
+                    `;
+                    challengeBtn.style.display = 'inline-block';
+                }
+                
+                feedbackEl.innerHTML = '';
+                feedbackEl.appendChild(feedbackBox);
+                
+                // Show steps if needed
+                if (!data.user_answer_matches && data.steps && data.steps.length > 0) {
+                    const stepsContainer = document.getElementById('steps-container');
+                    const stepsEl = document.getElementById('solution-steps');
                     stepsEl.innerHTML = data.steps.map((step, i) => 
-                        `<div class="step">${i + 1}. ${step}</div>`
+                        `<div style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">
+                            ${i + 1}. ${step}
+                        </div>`
                     ).join('');
                     stepsContainer.style.display = 'block';
                 }
                 
-                // Draw on mini complex plane
-                const canvas = document.getElementById('result-plane');
-                drawMiniPlane(canvas, data.real, data.imaginary);
-                
                 resultEl.style.display = 'block';
                 
             } catch (error) {
-                console.error('AI simplification failed:', error);
-                // Fallback to basic calculation
-                simplifiedEl.innerHTML = `Unable to simplify with AI. The expression is: ${expression}`;
+                console.error('AI check failed:', error);
+                feedbackEl.innerHTML = '<div class="feedback-box no-match">Unable to check with AI at this moment. Please try again.</div>';
                 resultEl.style.display = 'block';
             } finally {
                 statusEl.style.display = 'none';
             }
         }
 
-        function drawMiniPlane(canvas, real, imag) {
+        async function challengeAI() {
+            const expression = document.getElementById('complex-expression').value;
+            const userAnswer = document.getElementById('user-answer').value;
+            const feedbackEl = document.getElementById('feedback-content');
+            
+            const prompt = `The user believes their answer is correct and is challenging the AI's evaluation.
+            
+            Expression: ${expression}
+            User's answer: ${userAnswer}
+            
+            Please reconsider the problem. Check if there might be alternative correct forms.
+            For example, 5 + i and 5 + 1i and 5 + i*1 are all the same.
+            Also -5i + 3 is the same as 3 - 5i.
+            
+            Be open to the possibility that the user might be right.
+            
+            Format response as JSON:
+            {
+                "reconsideration": "explanation of the reconsideration",
+                "conclusion": "final determination"
+            }`;
+            
+            try {
+                const response = await callAI(prompt);
+                const data = JSON.parse(response);
+                
+                const feedbackBox = document.createElement('div');
+                feedbackBox.className = 'feedback-box match';
+                feedbackBox.innerHTML = `
+                    <strong>Challenge Considered:</strong>
+                    <div style="margin-top: 8px;">${data.reconsideration}</div>
+                    <div style="margin-top: 8px;"><strong>Conclusion:</strong> ${data.conclusion}</div>
+                `;
+                
+                feedbackEl.appendChild(feedbackBox);
+                
+            } catch (error) {
+                console.error('Challenge failed:', error);
+                feedbackEl.innerHTML += '<div class="feedback-box no-match">Unable to process challenge. Please try again.</div>';
+            }
+        }
+
+        // Geometric View functions
+        function initGeometricPlanes() {
+            drawAdditionPlane();
+            drawMultiplicationPlane();
+        }
+
+        function drawAdditionPlane() {
+            const canvas = document.getElementById('addition-plane');
+            if (!canvas) return;
+            
             const ctx = canvas.getContext('2d');
             const width = canvas.width;
             const height = canvas.height;
             const centerX = width / 2;
             const centerY = height / 2;
-            const scale = 30; // pixels per unit
+            const scale = 40;
             
-            // Clear canvas
             ctx.clearRect(0, 0, width, height);
             
             // Draw grid
             ctx.strokeStyle = '#e5e7eb';
             ctx.lineWidth = 1;
             
-            // Grid lines
             for (let i = -4; i <= 4; i++) {
                 const x = centerX + i * scale;
                 const y = centerY - i * scale;
@@ -978,39 +1300,35 @@
             ctx.lineTo(width, centerY);
             ctx.stroke();
             
-            // Draw the complex number
-            const x = centerX + real * scale;
-            const y = centerY - imag * scale;
-            
-            // Draw line from origin
-            ctx.strokeStyle = '#10b981';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            // Draw point
-            ctx.fillStyle = '#0f766e';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            // Label
-            ctx.fillStyle = '#212121';
-            ctx.font = '12px sans-serif';
-            ctx.fillText(`${real.toFixed(2)} + ${imag.toFixed(2)}i`, x + 10, y - 10);
+            // Draw numbers
+            additionNumbers.forEach((num, i) => {
+                const x = centerX + num.real * scale;
+                const y = centerY - num.imag * scale;
+                
+                // Draw vector
+                ctx.strokeStyle = i === 0 ? '#0f766e' : '#10b981';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                // Draw point
+                ctx.fillStyle = i === 0 ? '#0f766e' : '#10b981';
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Label
+                ctx.fillStyle = '#212121';
+                ctx.font = '12px sans-serif';
+                const label = `z${i+1}`;
+                ctx.fillText(label, x + 8, y - 8);
+            });
         }
 
-        // Geometric View functions
-        function initializeGeometricPlane() {
-            if (currentTab === 'geometric') {
-                drawComplexPlane();
-            }
-        }
-
-        function drawComplexPlane() {
-            const canvas = document.getElementById('complex-plane');
+        function drawMultiplicationPlane() {
+            const canvas = document.getElementById('multiplication-plane');
             if (!canvas) return;
             
             const ctx = canvas.getContext('2d');
@@ -1018,16 +1336,15 @@
             const height = canvas.height;
             const centerX = width / 2;
             const centerY = height / 2;
-            const scale = 50; // pixels per unit
+            const scale = 40;
             
-            // Clear canvas
             ctx.clearRect(0, 0, width, height);
             
             // Draw grid
             ctx.strokeStyle = '#e5e7eb';
             ctx.lineWidth = 1;
             
-            for (let i = -5; i <= 5; i++) {
+            for (let i = -4; i <= 4; i++) {
                 const x = centerX + i * scale;
                 const y = centerY - i * scale;
                 
@@ -1041,6 +1358,15 @@
                 ctx.lineTo(width, y);
                 ctx.stroke();
             }
+            
+            // Draw unit circle
+            ctx.strokeStyle = '#d1d5db';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, scale, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.setLineDash([]);
             
             // Draw axes
             ctx.strokeStyle = '#4b5563';
@@ -1056,256 +1382,338 @@
             ctx.lineTo(width, centerY);
             ctx.stroke();
             
-            // Labels
-            ctx.fillStyle = '#4b5563';
-            ctx.font = '14px sans-serif';
-            ctx.fillText('Real', width - 40, centerY - 10);
-            ctx.fillText('Imaginary', centerX + 10, 20);
-            
-            // Draw existing complex numbers
-            complexNumbers.forEach(z => {
-                drawComplexNumber(ctx, z, centerX, centerY, scale);
+            // Draw numbers with angle arcs
+            multiplicationNumbers.forEach((num, i) => {
+                const x = centerX + num.real * scale;
+                const y = centerY - num.imag * scale;
+                const r = Math.sqrt(num.real * num.real + num.imag * num.imag);
+                const theta = Math.atan2(num.imag, num.real);
+                
+                // Draw angle arc
+                ctx.strokeStyle = '#e5e7eb';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 20, 0, -theta, theta > 0);
+                ctx.stroke();
+                
+                // Draw vector
+                ctx.strokeStyle = i === 0 ? '#0f766e' : '#10b981';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                
+                // Draw point
+                ctx.fillStyle = i === 0 ? '#0f766e' : '#10b981';
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Label with polar info
+                ctx.fillStyle = '#212121';
+                ctx.font = '11px sans-serif';
+                const angle = (theta * 180 / Math.PI).toFixed(0);
+                const label = `z${i+1}: r=${r.toFixed(1)}, θ=${angle}°`;
+                ctx.fillText(label, x + 8, y - 8);
             });
         }
 
-        function drawComplexNumber(ctx, z, centerX, centerY, scale) {
-            const x = centerX + z.real * scale;
-            const y = centerY - z.imag * scale;
+        function addNumberToAdditionPlane() {
+            if (additionNumbers.length >= 2) {
+                additionNumbers = [];
+            }
+            const real = Math.random() * 6 - 3;
+            const imag = Math.random() * 6 - 3;
+            additionNumbers.push({ real, imag });
+            drawAdditionPlane();
             
-            // Draw line from origin
-            ctx.strokeStyle = z.selected ? '#f59e0b' : '#10b981';
-            ctx.lineWidth = 2;
+            const info = document.getElementById('addition-info');
+            if (additionNumbers.length === 2) {
+                const z1 = additionNumbers[0];
+                const z2 = additionNumbers[1];
+                info.innerHTML = `z₁ = ${z1.real.toFixed(2)} + ${z1.imag.toFixed(2)}i, 
+                                 z₂ = ${z2.real.toFixed(2)} + ${z2.imag.toFixed(2)}i`;
+            }
+        }
+
+        function showAddition() {
+            if (additionNumbers.length !== 2) {
+                alert('Please add exactly 2 numbers first');
+                return;
+            }
+            
+            const z1 = additionNumbers[0];
+            const z2 = additionNumbers[1];
+            const sum = {
+                real: z1.real + z2.real,
+                imag: z1.imag + z2.imag
+            };
+            
+            // Draw the sum
+            const canvas = document.getElementById('addition-plane');
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 40;
+            
+            const x = centerX + sum.real * scale;
+            const y = centerY - sum.imag * scale;
+            
+            // Draw parallelogram
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([5, 5]);
+            
+            const x1 = centerX + z1.real * scale;
+            const y1 = centerY - z1.imag * scale;
+            const x2 = centerX + z2.real * scale;
+            const y2 = centerY - z2.imag * scale;
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x, y);
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Draw sum vector
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 3;
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);
             ctx.lineTo(x, y);
             ctx.stroke();
             
-            // Draw point
-            ctx.fillStyle = z.selected ? '#f59e0b' : '#0f766e';
+            // Draw sum point
+            ctx.fillStyle = '#f59e0b';
             ctx.beginPath();
             ctx.arc(x, y, 6, 0, 2 * Math.PI);
             ctx.fill();
             
-            // Label
-            ctx.fillStyle = '#212121';
-            ctx.font = '12px sans-serif';
-            const label = `${z.real.toFixed(1)} + ${z.imag.toFixed(1)}i`;
-            ctx.fillText(label, x + 10, y - 10);
+            // Update info
+            const info = document.getElementById('addition-info');
+            info.innerHTML = `Sum: (${z1.real.toFixed(2)} + ${z1.imag.toFixed(2)}i) + 
+                            (${z2.real.toFixed(2)} + ${z2.imag.toFixed(2)}i) = 
+                            ${sum.real.toFixed(2)} + ${sum.imag.toFixed(2)}i`;
         }
 
-        function setForm(form) {
-            currentForm = form;
-            document.querySelectorAll('.form-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        function clearAdditionPlane() {
+            additionNumbers = [];
+            drawAdditionPlane();
+            document.getElementById('addition-info').innerHTML = '';
+        }
+
+        function addNumberToMultPlane() {
+            if (multiplicationNumbers.length >= 2) {
+                multiplicationNumbers = [];
+            }
+            const angle = Math.random() * 2 * Math.PI;
+            const r = 0.5 + Math.random() * 2;
+            const real = r * Math.cos(angle);
+            const imag = r * Math.sin(angle);
+            multiplicationNumbers.push({ real, imag });
+            drawMultiplicationPlane();
             
-            // Update display for existing numbers
-            updateGeometricInfo();
+            const info = document.getElementById('mult-info');
+            if (multiplicationNumbers.length === 2) {
+                const z1 = multiplicationNumbers[0];
+                const z2 = multiplicationNumbers[1];
+                const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
+                const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
+                const theta1 = Math.atan2(z1.imag, z1.real) * 180 / Math.PI;
+                const theta2 = Math.atan2(z2.imag, z2.real) * 180 / Math.PI;
+                info.innerHTML = `z₁: r=${r1.toFixed(2)}, θ=${theta1.toFixed(0)}° | 
+                                 z₂: r=${r2.toFixed(2)}, θ=${theta2.toFixed(0)}°`;
+            }
         }
 
-        function addComplexNumber() {
-            const real = Math.random() * 4 - 2;
-            const imag = Math.random() * 4 - 2;
-            complexNumbers.push({ real, imag, selected: false });
-            drawComplexPlane();
-        }
-
-        function multiplyNumbers() {
-            if (selectedNumbers.length !== 2) {
-                alert('Please select exactly 2 numbers to multiply');
+        function showMultiplication() {
+            if (multiplicationNumbers.length !== 2) {
+                alert('Please add exactly 2 numbers first');
                 return;
             }
             
-            const z1 = selectedNumbers[0];
-            const z2 = selectedNumbers[1];
+            const z1 = multiplicationNumbers[0];
+            const z2 = multiplicationNumbers[1];
             
-            // Complex multiplication: (a+bi)(c+di) = (ac-bd) + (ad+bc)i
-            const real = z1.real * z2.real - z1.imag * z2.imag;
-            const imag = z1.real * z2.imag + z1.imag * z2.real;
+            // Complex multiplication
+            const product = {
+                real: z1.real * z2.real - z1.imag * z2.imag,
+                imag: z1.real * z2.imag + z1.imag * z2.real
+            };
             
-            complexNumbers.push({ real, imag, selected: false });
-            selectedNumbers = [];
-            complexNumbers.forEach(z => z.selected = false);
-            drawComplexPlane();
+            // Polar form
+            const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
+            const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
+            const theta1 = Math.atan2(z1.imag, z1.real);
+            const theta2 = Math.atan2(z2.imag, z2.real);
+            const rProduct = r1 * r2;
+            const thetaProduct = theta1 + theta2;
             
-            // Show result
-            const info = document.getElementById('selection-info');
-            info.innerHTML = `Result: ${real.toFixed(2)} + ${imag.toFixed(2)}i`;
+            // Draw the product
+            const canvas = document.getElementById('multiplication-plane');
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 40;
+            
+            const x = centerX + product.real * scale;
+            const y = centerY - product.imag * scale;
+            
+            // Draw product vector
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            
+            // Draw angle arc for product
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, -thetaProduct, thetaProduct > 0);
+            ctx.stroke();
+            
+            // Draw product point
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Update info
+            const info = document.getElementById('mult-info');
+            info.innerHTML = `Product: r₁r₂ = ${r1.toFixed(2)} × ${r2.toFixed(2)} = ${rProduct.toFixed(2)}, 
+                            θ₁+θ₂ = ${(theta1*180/Math.PI).toFixed(0)}° + ${(theta2*180/Math.PI).toFixed(0)}° = ${(thetaProduct*180/Math.PI).toFixed(0)}°<br>
+                            Result: ${product.real.toFixed(2)} + ${product.imag.toFixed(2)}i`;
         }
 
-        function clearPlane() {
-            complexNumbers = [];
-            selectedNumbers = [];
-            drawComplexPlane();
+        function clearMultPlane() {
+            multiplicationNumbers = [];
+            drawMultiplicationPlane();
+            document.getElementById('mult-info').innerHTML = '';
         }
-
-        function showUnitCircle() {
-            const n = 8; // Show 8th roots of unity
-            complexNumbers = [];
-            for (let k = 0; k < n; k++) {
-                const angle = 2 * Math.PI * k / n;
-                complexNumbers.push({
-                    real: Math.cos(angle),
-                    imag: Math.sin(angle),
-                    selected: false
-                });
-            }
-            drawComplexPlane();
-        }
-
-        function updateGeometricInfo() {
-            const info = document.getElementById('selection-info');
-            if (selectedNumbers.length > 0) {
-                const z = selectedNumbers[0];
-                const r = Math.sqrt(z.real * z.real + z.imag * z.imag);
-                const theta = Math.atan2(z.imag, z.real);
-                
-                let display = '';
-                switch(currentForm) {
-                    case 'rectangular':
-                        display = `${z.real.toFixed(2)} + ${z.imag.toFixed(2)}i`;
-                        break;
-                    case 'polar':
-                        display = `${r.toFixed(2)} ∠ ${(theta * 180 / Math.PI).toFixed(1)}°`;
-                        break;
-                    case 'exponential':
-                        display = `${r.toFixed(2)} e^(${theta.toFixed(2)}i)`;
-                        break;
-                }
-                info.innerHTML = display;
-            }
-        }
-
-        function animateMultiplication() {
-            const z1Input = document.getElementById('mult-z1').value;
-            const z2Input = document.getElementById('mult-z2').value;
-            const vizDiv = document.getElementById('mult-visualization');
-            
-            // Parse inputs (simplified)
-            // This would need proper parsing in production
-            vizDiv.innerHTML = `
-                <p>Multiplying ${z1Input} by ${z2Input}</p>
-                <p>Result will appear here with animation...</p>
-            `;
-        }
-
-        // Complex plane interaction
-        document.getElementById('complex-plane')?.addEventListener('click', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = this.width / 2;
-            const centerY = this.height / 2;
-            const scale = 50;
-            
-            const real = (x - centerX) / scale;
-            const imag = -(y - centerY) / scale;
-            
-            // Check if clicking near existing number
-            let clickedNumber = null;
-            complexNumbers.forEach(z => {
-                const zx = centerX + z.real * scale;
-                const zy = centerY - z.imag * scale;
-                const dist = Math.sqrt((x - zx) ** 2 + (y - zy) ** 2);
-                if (dist < 10) {
-                    clickedNumber = z;
-                }
-            });
-            
-            if (clickedNumber) {
-                clickedNumber.selected = !clickedNumber.selected;
-                if (clickedNumber.selected) {
-                    selectedNumbers.push(clickedNumber);
-                } else {
-                    selectedNumbers = selectedNumbers.filter(z => z !== clickedNumber);
-                }
-            } else {
-                complexNumbers.push({ real, imag, selected: false });
-            }
-            
-            drawComplexPlane();
-            updateGeometricInfo();
-        });
 
         // Equation Solver functions
-        function setEquation(eq) {
-            document.getElementById('equation-input').value = eq;
+        function setRootEquation(n, c) {
+            document.getElementById('n-value').value = n;
+            document.getElementById('c-complex').value = c;
         }
 
-        async function solveEquation() {
-            const equation = document.getElementById('equation-input').value;
-            const statusEl = document.getElementById('solver-status');
-            const resultsEl = document.getElementById('equation-results');
-            const rootsList = document.getElementById('roots-list');
-            const explanationEl = document.getElementById('equation-explanation');
-            const patternEl = document.getElementById('pattern-explanation');
-            
-            if (!equation) {
-                alert('Please enter an equation');
-                return;
-            }
+        function setPolyEquation(eq) {
+            document.getElementById('poly-equation').value = eq;
+        }
+
+        async function solveRootEquation() {
+            const n = parseInt(document.getElementById('n-value').value);
+            const c = document.getElementById('c-complex').value;
+            const statusEl = document.getElementById('root-status');
+            const resultsEl = document.getElementById('root-results');
+            const rootList = document.getElementById('root-list');
+            const patternEl = document.getElementById('root-pattern');
             
             statusEl.style.display = 'inline-flex';
             
-            const prompt = `Solve the complex equation: ${equation}
+            const prompt = `Solve z^${n} = ${c}
             
-            Find all complex solutions. For roots of unity, give exact values using radicals and fractions where possible.
+            Find all ${n} complex roots. Use De Moivre's formula.
             
-            Format your response as JSON:
+            Format as JSON:
             {
                 "roots": [
-                    {"real": number, "imaginary": number, "exact": "exact form like 1/2 + √3/2 i"},
+                    {"real": number, "imaginary": number, "exact": "exact form if possible"},
                     ...
                 ],
-                "pattern": "Explanation of the pattern or structure of these roots",
-                "method": "Brief explanation of solving method"
-            }
-            
-            Be precise. List ALL roots. For roots of unity, they should be evenly spaced around the unit circle.`;
+                "pattern": "Explain the geometric pattern: all roots have the same modulus (nth root of |c|), and are evenly spaced by angle 2π/n"
+            }`;
             
             try {
                 const response = await callAI(prompt);
                 const data = JSON.parse(response);
                 
                 // Display roots
-                rootsList.innerHTML = data.roots.map((root, i) => `
+                rootList.innerHTML = data.roots.map((root, i) => `
                     <div class="root-item">
-                        <span>Root ${i + 1}:</span>
+                        <span>z${i+1}:</span>
                         <span class="root-value">${root.exact || `${root.real.toFixed(3)} + ${root.imaginary.toFixed(3)}i`}</span>
                     </div>
                 `).join('');
                 
-                // Draw roots on plane
-                const canvas = document.getElementById('roots-plane');
-                drawRootsPlane(canvas, data.roots);
+                // Draw on plane
+                const canvas = document.getElementById('root-plane');
+                drawRootsOnPlane(canvas, data.roots);
                 
-                // Show pattern explanation
-                patternEl.innerHTML = `<p>${data.pattern}</p><p><strong>Method:</strong> ${data.method}</p>`;
+                // Show pattern
+                patternEl.innerHTML = data.pattern;
                 
-                resultsEl.style.display = 'grid';
-                explanationEl.style.display = 'block';
+                resultsEl.style.display = 'block';
                 
             } catch (error) {
-                console.error('AI solver failed:', error);
-                // Fallback
-                rootsList.innerHTML = '<div class="root-item">Unable to solve with AI. Please try a simpler equation.</div>';
-                resultsEl.style.display = 'grid';
+                console.error('Solver failed:', error);
+                rootList.innerHTML = '<div class="root-item">Unable to solve. Please try again.</div>';
+                resultsEl.style.display = 'block';
             } finally {
                 statusEl.style.display = 'none';
             }
         }
 
-        function drawRootsPlane(canvas, roots) {
+        async function solvePolynomial() {
+            const equation = document.getElementById('poly-equation').value;
+            const statusEl = document.getElementById('poly-status');
+            const resultsEl = document.getElementById('poly-results');
+            const polyList = document.getElementById('poly-list');
+            
+            statusEl.style.display = 'inline-flex';
+            
+            const prompt = `Solve the polynomial equation: ${equation}
+            
+            Find all complex roots.
+            
+            Format as JSON:
+            {
+                "roots": [
+                    {"real": number, "imaginary": number, "exact": "exact form if possible"},
+                    ...
+                ]
+            }`;
+            
+            try {
+                const response = await callAI(prompt);
+                const data = JSON.parse(response);
+                
+                // Display roots
+                polyList.innerHTML = data.roots.map((root, i) => `
+                    <div class="root-item">
+                        <span>Root ${i+1}:</span>
+                        <span class="root-value">${root.exact || `${root.real.toFixed(3)} + ${root.imaginary.toFixed(3)}i`}</span>
+                    </div>
+                `).join('');
+                
+                // Draw on plane
+                const canvas = document.getElementById('poly-plane');
+                drawRootsOnPlane(canvas, data.roots);
+                
+                resultsEl.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Solver failed:', error);
+                polyList.innerHTML = '<div class="root-item">Unable to solve. Please try again.</div>';
+                resultsEl.style.display = 'block';
+            } finally {
+                statusEl.style.display = 'none';
+            }
+        }
+
+        function drawRootsOnPlane(canvas, roots) {
             const ctx = canvas.getContext('2d');
             const width = canvas.width;
             const height = canvas.height;
             const centerX = width / 2;
             const centerY = height / 2;
-            const scale = 80; // pixels per unit
+            const scale = 60;
             
-            // Clear canvas
             ctx.clearRect(0, 0, width, height);
             
             // Draw grid
@@ -1329,10 +1737,12 @@
             
             // Draw unit circle
             ctx.strokeStyle = '#d1d5db';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
             ctx.beginPath();
             ctx.arc(centerX, centerY, scale, 0, 2 * Math.PI);
             ctx.stroke();
+            ctx.setLineDash([]);
             
             // Draw axes
             ctx.strokeStyle = '#4b5563';
@@ -1356,7 +1766,7 @@
                 // Draw line from origin
                 ctx.strokeStyle = '#10b981';
                 ctx.lineWidth = 1;
-                ctx.setLineDash([5, 5]);
+                ctx.setLineDash([3, 3]);
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(x, y);
@@ -1366,18 +1776,96 @@
                 // Draw point
                 ctx.fillStyle = '#0f766e';
                 ctx.beginPath();
-                ctx.arc(x, y, 6, 0, 2 * Math.PI);
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
                 ctx.fill();
                 
                 // Label
                 ctx.fillStyle = '#212121';
-                ctx.font = '11px sans-serif';
-                ctx.fillText(`z${i+1}`, x + 8, y - 8);
+                ctx.font = '10px sans-serif';
+                ctx.fillText(`z${i+1}`, x + 6, y - 6);
             });
+            
+            // Connect roots if they form a regular polygon (roots of unity)
+            if (roots.length > 2) {
+                ctx.strokeStyle = '#10b981';
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 0.3;
+                ctx.beginPath();
+                roots.forEach((root, i) => {
+                    const x = centerX + root.real * scale;
+                    const y = centerY - root.imaginary * scale;
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                });
+                ctx.closePath();
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
         }
 
-        // Initialize the first polynomial factor on load
-        setTimeout(() => factorPolynomial(), 500);
+        // Canvas click handlers
+        document.getElementById('addition-plane')?.addEventListener('click', function(e) {
+            if (additionNumbers.length >= 2) {
+                additionNumbers = [];
+            }
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = this.width / 2;
+            const centerY = this.height / 2;
+            const scale = 40;
+            
+            const real = (x - centerX) / scale;
+            const imag = -(y - centerY) / scale;
+            
+            additionNumbers.push({ real, imag });
+            drawAdditionPlane();
+            
+            const info = document.getElementById('addition-info');
+            if (additionNumbers.length === 1) {
+                info.innerHTML = `z₁ = ${real.toFixed(2)} + ${imag.toFixed(2)}i`;
+            } else if (additionNumbers.length === 2) {
+                const z1 = additionNumbers[0];
+                const z2 = additionNumbers[1];
+                info.innerHTML = `z₁ = ${z1.real.toFixed(2)} + ${z1.imag.toFixed(2)}i, 
+                                 z₂ = ${z2.real.toFixed(2)} + ${z2.imag.toFixed(2)}i`;
+            }
+        });
+
+        document.getElementById('multiplication-plane')?.addEventListener('click', function(e) {
+            if (multiplicationNumbers.length >= 2) {
+                multiplicationNumbers = [];
+            }
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = this.width / 2;
+            const centerY = this.height / 2;
+            const scale = 40;
+            
+            const real = (x - centerX) / scale;
+            const imag = -(y - centerY) / scale;
+            
+            multiplicationNumbers.push({ real, imag });
+            drawMultiplicationPlane();
+            
+            const info = document.getElementById('mult-info');
+            if (multiplicationNumbers.length === 2) {
+                const z1 = multiplicationNumbers[0];
+                const z2 = multiplicationNumbers[1];
+                const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
+                const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
+                const theta1 = Math.atan2(z1.imag, z1.real) * 180 / Math.PI;
+                const theta2 = Math.atan2(z2.imag, z2.real) * 180 / Math.PI;
+                info.innerHTML = `z₁: r=${r1.toFixed(2)}, θ=${theta1.toFixed(0)}° | 
+                                 z₂: r=${r2.toFixed(2)}, θ=${theta2.toFixed(0)}°`;
+            }
+        });
     </script>
 </body>
 </html>
