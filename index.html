@@ -539,6 +539,10 @@
  			margin-bottom: 8px;
  			font-weight: 600;
  		}
+		
+ 		.approach-box p {
+ 			line-height: 2; /* Improve line spacing for KaTeX rendered text */
+ 		}
 
  		.approach-feedback {
  			display: none;
@@ -2090,39 +2094,35 @@
  		// Exploration functions
  		function loadExplorationProblem() {
  			const problem = generateExplorationProblem();
- 			
-             // Split the explanation strings by <br> and render each part with KaTeX
-             function renderApproach(elementId, text) {
-                 const element = document.getElementById(elementId);
-                 element.innerHTML = ''; // Clear previous content
-                 const parts = text.split('<br>');
-                 parts.forEach((part, index) => {
-                     const span = document.createElement('span');
-                     try {
-                         katex.render(part, span, { throwOnError: false, displayMode: false });
-                     } catch (e) {
-                         span.textContent = part; // Fallback to plain text on error
-                     }
-                     element.appendChild(span);
-                     if (index < parts.length - 1) {
-                         element.appendChild(document.createElement('br'));
-                     }
-                 });
-             }
 
- 			// Render the main problem
+ 			function renderApproach(elementId, text) {
+ 				const element = document.getElementById(elementId);
+ 				element.innerHTML = ''; 
+ 				const parts = text.split('<br>');
+ 				parts.forEach((part, index) => {
+ 					const span = document.createElement('span');
+ 					try {
+ 						katex.render(part, span, { throwOnError: false, displayMode: false });
+ 					} catch (e) {
+ 						span.textContent = part; 
+ 					}
+ 					element.appendChild(span);
+ 					if (index < parts.length - 1) {
+ 						element.appendChild(document.createElement('br'));
+ 					}
+ 				});
+ 			}
+
  			katex.render(problem.problem, document.getElementById('exploration-problem'), {
  				displayMode: false,
  				throwOnError: false
  			});
  			
-             // Render the approaches line-by-line
-             renderApproach('rect-approach', problem.rect);
-             renderApproach('polar-approach', problem.polar);
+ 			renderApproach('rect-approach', problem.rect);
+ 			renderApproach('polar-approach', problem.polar);
 
  			document.getElementById('approach-feedback').innerHTML = problem.feedback;
  			
- 			// Hide solutions
  			document.getElementById('approach-comparison').style.display = 'none';
  			document.getElementById('approach-feedback').style.display = 'none';
  		}
@@ -2185,14 +2185,32 @@
  			const listDiv = document.getElementById('roots-list');
  			
  			resultDiv.style.display = 'block';
+ 			listDiv.innerHTML = ''; // Clear previous results
  			
  			let c = parseComplex(cStr);
  			
- 			const r = Math.sqrt(c.real * c.real + c.imag * c.imag);
+ 			const modulusOfC = Math.sqrt(c.real * c.real + c.imag * c.imag);
  			const theta = Math.atan2(c.imag, c.real);
  			
- 			const rootR = Math.pow(r, 1/n);
- 			let rootsHtml = '';
+ 			let modulusOfCStr;
+ 			const modulusOfCSquared = c.real * c.real + c.imag * c.imag;
+
+ 			if (Number.isInteger(modulusOfC)) {
+ 				modulusOfCStr = modulusOfC.toString();
+ 			} else if (Number.isInteger(modulusOfCSquared)) {
+ 				modulusOfCStr = `\\sqrt{${modulusOfCSquared}}`;
+ 			} else {
+ 				modulusOfCStr = modulusOfC.toFixed(2);
+ 			}
+
+ 			let exactRootRadiusStr = '';
+ 			if (n === 2) {
+ 				exactRootRadiusStr = `\\sqrt{${modulusOfCStr}}`;
+ 			} else {
+ 				exactRootRadiusStr = `\\sqrt[${n}]{${modulusOfCStr}}`;
+ 			}
+ 			
+ 			const rootR = Math.pow(modulusOfC, 1/n);
  			
  			for (let k = 0; k < n; k++) {
  				const angle = (theta + 2 * Math.PI * k) / n;
@@ -2200,13 +2218,19 @@
  				const realPart = rootR * Math.cos(angle);
  				const imagPart = rootR * Math.sin(angle);
  				
- 				const formattedRoot = formatComplexNumber(realPart, imagPart);
- 				const formattedRadius = rootR.toFixed(2).replace(/\.?0+$/, '');
+ 				const formattedRect = formatComplexNumber(realPart, imagPart);
 
- 				rootsHtml += `<p>z<sub>${k}</sub> = ${formattedRadius}(cos ${angleDeg}° + i sin ${angleDeg}°) ≈ ${formattedRoot}</p>`;
+ 				const p = document.createElement('p');
+ 				
+ 				const fullLatexString = `z_{${k}} = ${exactRootRadiusStr}(\\cos ${angleDeg}° + i \\sin ${angleDeg}°) \\approx ${formattedRect}`;
+ 				
+ 				katex.render(fullLatexString, p, {
+ 					throwOnError: false
+ 				});
+
+ 				listDiv.appendChild(p);
  			}
  			
- 			listDiv.innerHTML = rootsHtml;
  			drawRootsPlane(n, rootR, theta);
  		}
 
