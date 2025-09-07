@@ -123,6 +123,7 @@
             font-size: 2.5em;
             color: #0f766e;
             margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .intro-header p {
@@ -154,6 +155,12 @@
             color: #0f766e;
             margin-bottom: 12px;
             font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .concept-card p {
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         /* Interactive Demo */
@@ -163,6 +170,19 @@
             padding: 24px;
             margin-bottom: 32px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .interactive-demo h2 {
+            color: #0f766e;
+            margin-bottom: 12px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .interactive-demo > p {
+            color: #4b5563;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
         .demo-controls {
@@ -253,6 +273,7 @@
 
         .math-display {
             margin: 8px 0;
+            text-align: center;
         }
 
         /* Navigation Buttons */
@@ -293,9 +314,16 @@
             margin-bottom: 16px;
         }
 
+        .example-box h4 {
+            color: #0f766e;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
         .example-step {
             margin: 8px 0;
             padding-left: 20px;
+            font-size: 15px;
         }
 
         /* User input styles */
@@ -388,7 +416,6 @@
              background: #7f8792;
         }
 
-
         .control-button:hover {
             background: #10b981;
         }
@@ -413,6 +440,12 @@
         .info-box h4 {
             color: #0f766e;
             margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            font-size: 15px;
+            color: #4b5563;
         }
 
         .summary-box {
@@ -426,6 +459,23 @@
         .summary-box h3 {
             color: #0f766e;
             margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .summary-box p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .summary-box ul {
+            margin-left: 20px;
+            margin-top: 12px;
+        }
+
+        .summary-box li {
+            margin-bottom: 8px;
+            font-size: 15px;
         }
 
         /* Formula display */
@@ -453,26 +503,43 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
+
+        .which-form-box h2 {
+            color: #0f766e;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
         .which-form-problem {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-bottom: 16px;
         }
+
+        .which-form-problem p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
         .approach-comparison {
             display: none;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
             margin-top: 16px;
         }
+
         .approach-box {
             background: #f9fafb;
             border-radius: 8px;
             padding: 16px;
             border: 2px solid #e5e7eb;
         }
+
         .approach-box h4 {
             color: #0f766e;
             margin-bottom: 8px;
+            font-weight: 600;
         }
+
         .approach-feedback {
             display: none;
             margin-top: 16px;
@@ -483,7 +550,6 @@
             color: #065f46;
             font-weight: 600;
         }
-
 
         /* Feedback boxes */
         .feedback-box {
@@ -629,7 +695,7 @@
             .roots-container {
                 grid-template-columns: 1fr;
             }
-             .approach-comparison {
+            .approach-comparison {
                 grid-template-columns: 1fr;
             }
         }
@@ -656,7 +722,7 @@
 </head>
 <body>
     <div class="mathswell-nav">
-        <a href="/" class="mw-link">
+        <a href="https://mathswell.com" class="mw-link">
             <img src="/logo-mathswell-square-mirror.svg" alt="Mathswell" width="28" height="28">
             <span>MATHSWELL</span>
         </a>
@@ -715,7 +781,7 @@
                 <p>When the discriminant is negative, we can now find solutions using complex numbers!</p>
                 
                 <div style="margin-top: 20px;">
-                    <p><strong>Try your own quadratic:</strong></p>
+                    <p style="font-weight: 600; margin-bottom: 16px;">Try your own quadratic:</p>
                     <div class="demo-controls">
                         <div class="slider-group">
                             <label>b =</label>
@@ -816,7 +882,7 @@
                 <div style="margin-top: 16px;">
                     <div class="math-display" id="generated-problem"></div>
                     <input type="text" class="user-answer-input" id="generated-answer" 
-                            placeholder="Enter your answer in form a + bi">
+                           placeholder="Enter your answer in form a + bi">
                     <button class="demo-button" onclick="checkGeneratedAnswer()">Check Answer</button>
                     <div id="generated-feedback"></div>
                 </div>
@@ -923,7 +989,7 @@
                 <h3>Key Insights</h3>
                 <p><strong>Multiplication:</strong> Scales by |z₁||z₂| and rotates by θ₁ + θ₂</p>
                 <p><strong>Division:</strong> Scales by |z₁|/|z₂| and rotates by θ₁ - θ₂</p>
-                <p>Complex arithmetic is geometric transformation!</p>
+                <p style="margin-top: 12px;">Complex arithmetic is geometric transformation!</p>
             </div>
         </div>
 
@@ -952,6 +1018,18 @@
                 <div class="approach-feedback" id="approach-feedback"></div>
             </div>
 
+            <div class="card">
+                <h2>From Powers to De Moivre's Theorem</h2>
+                <p>You've seen how polar form simplifies calculating high powers like z<sup>n</sup>. This is based on the geometric nature of multiplication.</p>
+                <p>To compute z<sup>n</sup>, we just multiply z by itself n times. For a complex number in polar form, this means we:</p>
+                <ul>
+                    <li><strong>Multiply the moduli n times:</strong> The new modulus is r<sup>n</sup>.</li>
+                    <li><strong>Add the angles n times:</strong> The new angle is nθ.</li>
+                </ul>
+                <p>This gives us the celebrated <strong>De Moivre's Theorem</strong>:</p>
+                <div class="formula-box" id="de-moivre-formula"></div>
+                <p>This theorem not only simplifies powers but also paves the way for the next logical step: finding the roots of complex numbers.</p>
+            </div>
 
             <div class="card">
                 <h2>Finding Roots: <span id="roots-equation"></span></h2>
@@ -984,7 +1062,7 @@
                             <div id="roots-list"></div>
                         </div>
                         <div style="text-align: center;">
-                            <h4>Geometric View</h4>
+                            <h4 style="color: #0f766e; margin-bottom: 12px; font-weight: 600;">Geometric View</h4>
                             <canvas id="roots-plane" width="350" height="350"></canvas>
                         </div>
                     </div>
@@ -994,11 +1072,11 @@
             <div class="summary-box">
                 <h3>Key Insight</h3>
                 <p>Use <strong>Rectangular Form (a+bi)</strong> for addition and subtraction. It's simple and direct.</p>
-                <p>Use <strong>Polar Form r(cosθ + isinθ)</strong> for multiplication, division, powers, and roots. It reveals the geometric action of scaling and rotation.</p>
+                <p>Use <strong>Polar Form r(cos θ + i sin θ)</strong> for multiplication, division, powers, and roots. It reveals the geometric action of scaling and rotation.</p>
                 <p>The equation <span id="key-insight-zn"></span> is fundamentally about repeated multiplication (z · z · ... · z). This is why the polar approach works so well:</p>
                 <ul>
-                    <li style="margin-bottom: 8px;">The modulus of z must be the n-th root of the modulus of c.</li>
-                    <li>'n' times the angle of z must be the angle of c (plus full circle rotations).</li>
+                    <li>The modulus of z must be the n-th root of the modulus of c.</li>
+                    <li>n times the angle of z must be the angle of c (plus full circle rotations).</li>
                 </ul>
             </div>
         </div>
@@ -1013,49 +1091,153 @@
         let unitSquarePoints = [];
         let showGrid = true;
         let powerAnimationId = null;
-        let currentExplorationIndex = 0;
 
-        const explorationProblems = [
-            {
-                type: 'addition',
-                problem: '(2 + 3i) + (1 - 2i)',
-                rect: 'Simply add components:<br>(2+3i) + (1-2i) = 3 + i<br>Quick and easy!',
-                polar: 'Convert to polar, then...<br>Actually quite complicated!<br>Need to convert back to add.',
-                feedback: 'Rectangular form is clearly better for addition and subtraction!'
-            },
-            {
-                type: 'power',
-                problem: '(1+i)<sup>10</sup>',
-                rect: 'Multiply 10 times:<br>(1+i)(1+i) = 2i<br>(2i)(1+i) = -2 + 2i<br>... many steps!',
-                polar: 'Convert: 1+i = √2(cos 45° + i sin 45°)<br>Power: (√2)<sup>10</sup> (cos(10×45°) + i sin(10×45°))<br>= 32(cos 450°) = 32(cos 90°) = 32i<br>Much simpler!',
-                feedback: 'Polar form is much better for powers and roots!'
-            },
-             {
-                type: 'division',
-                problem: '<u>(3+4i)</u><br>(1-i)',
-                rect: 'Multiply by conjugate:<br><u>(3+4i)(1+i)</u> = <u>(3+3i+4i-4)</u><br>(1-i)(1+i) \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 2<br>= (-1+7i) / 2',
-                polar: 'Convert both to polar<br>Divide magnitudes, subtract angles<br>Convert back if needed',
-                feedback: 'Both methods work well for division - choose based on the numbers!'
-            },
-             {
-                type: 'multiplication',
-                problem: '(cos 20° + i sin 20°)(cos 70° + i sin 70°)',
-                rect: 'Find decimal values for sin/cos<br>Expand using FOIL<br>Very messy and loses precision!',
-                polar: 'Already in polar form!<br>r=1 for both.<br>Add angles: 20°+70°=90°<br>Result: cos 90° + i sin 90° = i',
-                feedback: 'Polar form is incredibly efficient when numbers are already in or near polar form!'
+        // Enhanced problem generation system
+        function generateExplorationProblem() {
+            const problemTypes = [
+                'addition', 'subtraction', 'multiplication', 'division', 
+                'power', 'mixed-power-add', 'mixed-power-sub', 'simple-power',
+                'polar-mult', 'polar-div', 'conjugate', 'modulus'
+            ];
+            
+            const type = problemTypes[Math.floor(Math.random() * problemTypes.length)];
+            let problem = {};
+            
+            switch(type) {
+                case 'addition':
+                    const a1 = Math.floor(Math.random() * 7) - 3;
+                    const b1 = Math.floor(Math.random() * 7) - 3;
+                    const a2 = Math.floor(Math.random() * 7) - 3;
+                    const b2 = Math.floor(Math.random() * 7) - 3;
+                    problem = {
+                        problem: `(${formatComplexNumber(a1, b1)}) + (${formatComplexNumber(a2, b2)})`,
+                        rect: `Simply add components:<br>(${a1}${b1>=0?'+':''}${b1}i) + (${a2}${b2>=0?'+':''}${b2}i) = ${a1+a2}${(b1+b2)>=0?'+':''}${b1+b2}i<br>Quick and easy!`,
+                        polar: `Convert to polar, then...<br>Actually quite complicated!<br>Need to convert back to add.`,
+                        feedback: 'Rectangular form is clearly better for addition!'
+                    };
+                    break;
+                    
+                case 'subtraction':
+                    const c1 = Math.floor(Math.random() * 7) - 3;
+                    const d1 = Math.floor(Math.random() * 7) - 3;
+                    const c2 = Math.floor(Math.random() * 7) - 3;
+                    const d2 = Math.floor(Math.random() * 7) - 3;
+                    problem = {
+                        problem: `(${formatComplexNumber(c1, d1)}) - (${formatComplexNumber(c2, d2)})`,
+                        rect: `Simply subtract components:<br>(${c1}${d1>=0?'+':''}${d1}i) - (${c2}${d2>=0?'+':''}${d2}i) = ${c1-c2}${(d1-d2)>=0?'+':''}${d1-d2}i<br>Direct and simple!`,
+                        polar: `Would need to convert both to polar,<br>then back to rectangular to subtract.<br>Much more work!`,
+                        feedback: 'Rectangular form wins for subtraction too!'
+                    };
+                    break;
+                    
+                case 'power':
+                    const bases = ['1+i', '1-i', 'i', '\\sqrt{3}+i', '1+\\sqrt{3}i'];
+                    const base = bases[Math.floor(Math.random() * bases.length)];
+                    const n = Math.floor(Math.random() * 8) + 5;
+                    problem = {
+                        problem: `(${base})^{${n}}`,
+                        rect: `Multiply ${n} times:<br>Very tedious and error-prone!<br>Many expansion steps needed.`,
+                        polar: `Convert to polar form,<br>raise modulus to power ${n},<br>multiply angle by ${n}.<br>Much cleaner!`,
+                        feedback: 'Polar form is definitely better for powers!'
+                    };
+                    break;
+                    
+                case 'mixed-power-add':
+                    const n1 = Math.floor(Math.random() * 10) + 10;
+                    const n2 = Math.floor(Math.random() * 10) + 5;
+                    problem = {
+                        problem: `(1+i)^{${n1}} + (1-i)^{${n2}}`,
+                        rect: `Would need to expand both powers<br>through repeated multiplication.<br>Extremely tedious!`,
+                        polar: `Use polar for each power:<br>• (1+i) = √2(cos 45° + i sin 45°)<br>• (1-i) = √2(cos(-45°) + i sin(-45°))<br>Compute powers, then convert back to add.`,
+                        feedback: 'Use polar for the powers, then convert to rectangular for the addition!'
+                    };
+                    break;
+                    
+                case 'mixed-power-sub':
+                    const m1 = Math.floor(Math.random() * 8) + 8;
+                    const m2 = Math.floor(Math.random() * 8) + 4;
+                    const iPowers = ['1', 'i', '-1', '-i'];
+                    const iPower1 = iPowers[m1 % 4];
+                    
+                    // (-i)^n pattern: (-i)^1 = -i, (-i)^2 = -1, (-i)^3 = i, (-i)^4 = 1
+                    const negIPowers = ['-i', '-1', 'i', '1'];
+                    const iPower2 = negIPowers[(m2 - 1) % 4];
+                    
+                    problem = {
+                        problem: `i^{${m1}} - (-i)^{${m2}}`,
+                        rect: `Use the pattern i^2 = -1, i^3 = -i, i^4 = 1<br>` +
+                              `i^{${m1}} = i^{${m1%4}} = ${iPower1}<br>` +
+                              `For (-i): (-i)^2 = (-1)^2 \\cdot i^2 = 1 \\cdot (-1) = -1<br>` +
+                              `Pattern: (-i), -1, i, 1, (-i), ...<br>` +
+                              `(-i)^{${m2}} = ${iPower2}<br>` +
+                              `Then subtract: ${iPower1} - (${iPower2})`,
+                        polar: `i = 1(\\cos 90° + i\\sin 90°)<br>` +
+                               `i^{${m1}} = 1^{${m1}}(\\cos ${m1*90}° + i\\sin ${m1*90}°)<br>` +
+                               `= \\cos ${(m1*90)%360}° + i\\sin ${(m1*90)%360}° = ${iPower1}<br><br>` +
+                               `-i = 1(\\cos 270° + i\\sin 270°)<br>` +
+                               `(-i)^{${m2}} = 1^{${m2}}(\\cos ${m2*270}° + i\\sin ${m2*270}°)<br>` +
+                               `= \\cos ${(m2*270)%360}° + i\\sin ${(m2*270)%360}° = ${iPower2}<br>` +
+                               `Then subtract the results.`,
+                        feedback: 'For powers of i, the cyclic pattern in rectangular form is often quickest, but polar shows why the pattern exists!'
+                    };
+                    break;
+                    
+                case 'simple-power':
+                    problem = {
+                        problem: `(1+i)^2`,
+                        rect: `Expand: (1+i)² = 1 + 2i + i²<br>= 1 + 2i - 1 = 2i<br>Pretty straightforward!`,
+                        polar: `Convert: 1+i = √2(cos 45° + i sin 45°)<br>Square: 2(cos 90° + i sin 90°) = 2i<br>Also works well!`,
+                        feedback: 'Both methods work well for small powers. Choose based on comfort!'
+                    };
+                    break;
+                    
+                case 'polar-mult':
+                    const angles = [30, 45, 60, 20, 40];
+                    const a = angles[Math.floor(Math.random() * angles.length)];
+                    const b = angles[Math.floor(Math.random() * angles.length)];
+                    problem = {
+                        problem: `(\\cos ${a}° + i\\sin ${a}°)(\\cos ${b}° + i\\sin ${b}°)`,
+                        rect: `Find decimal values for sin/cos,<br>multiply everything out,<br>and lose exact values!`,
+                        polar: `Already in polar with r = 1!<br>Add angles: ${a}° + ${b}° = ${a+b}°<br>Result: cos ${a+b}° + i sin ${a+b}°`,
+                        feedback: 'When already in polar form, stay in polar form!'
+                    };
+                    break;
+                    
+                case 'division':
+                    const nums = ['3+4i', '2-i', '1+2i', '4+3i'];
+                    const denoms = ['1-i', '2+i', '1+i', '3-i'];
+                    const num = nums[Math.floor(Math.random() * nums.length)];
+                    const denom = denoms[Math.floor(Math.random() * denoms.length)];
+                    problem = {
+                        problem: `\\frac{${num}}{${denom}}`,
+                        rect: `Multiply by conjugate of denominator.<br>Expand and simplify.<br>Standard approach, works well.`,
+                        polar: `Convert both to polar,<br>divide moduli, subtract angles.<br>More steps for these numbers.`,
+                        feedback: 'For division with "nice" rectangular numbers, either method works!'
+                    };
+                    break;
+                    
+                default:
+                    problem = {
+                        problem: `(2+3i)(1-i)`,
+                        rect: `Multiply the terms:<br>(2+3i)(1-i) = 2 - 2i + 3i - 3i²<br>= 2 + i - 3(-1) = 5+i`,
+                        polar: `Convert both, multiply moduli,<br>add angles, convert back.<br>More work for simple numbers.`,
+                        feedback: 'Rectangular is better for simple multiplication of small numbers.'
+                    };
             }
-        ];
+            
+            return problem;
+        }
         
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             // Introduction tab formulas
             katex.render("i^2 = -1", document.getElementById('i-definition'), {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
             katex.render("z = a + bi", document.getElementById('complex-form'), {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
@@ -1076,11 +1258,14 @@
             // Exploration tab
             loadExplorationProblem();
             updateRootsDisplay();
+            katex.render("[r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos(n\\theta) + i\\sin(n\\theta))", document.getElementById('de-moivre-formula'), {
+                displayMode: true,
+                throwOnError: false
+            });
             katex.render("z^n = c", document.getElementById('key-insight-zn'), {
                 displayMode: false,
                 throwOnError: false
             });
-
             
             // Initialize displays
             updateFactoring();
@@ -1158,12 +1343,12 @@
             }
             
             katex.render(factorLatex, factorDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
             katex.render(rootsLatex, rootsDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
         }
@@ -1184,7 +1369,7 @@
             const eqLatex = `x^2 ${bStr} ${cStr} = 0`;
             
             katex.render(eqLatex, equationDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
@@ -1192,7 +1377,7 @@
             let discLatex = `\\text{Discriminant: } b^2 - 4ac = ${disc}`;
             
             katex.render(discLatex, discriminantDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
@@ -1237,13 +1422,13 @@
             }
             
             katex.render(rootsLatex, rootsDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
             
             if (explanationLatex) {
                 katex.render(explanationLatex, explanationDisplay, {
-                    displayMode: false,
+                    displayMode: true,
                     throwOnError: false
                 });
             }
@@ -1399,7 +1584,7 @@
             const values = ['1', 'i', '-1', '-i'];
             const normalizedPower = ((power % 4) + 4) % 4;
             katex.render(`i^{${power}} = ${values[normalizedPower]}`, currentPowerDisplay, {
-                displayMode: false,
+                displayMode: true,
                 throwOnError: false
             });
         }
@@ -1480,7 +1665,7 @@
                 const realPart = a*c - b*d;
                 const imagPart = a*d + b*c;
                 answer = formatComplexNumber(realPart, imagPart);
-                solution = `FOIL: (${a})(${c}) + (${a})(${d}i) + (${b}i)(${c}) + (${b}i)(${d}i)\n= ${a*c} + ${a*d}i + ${b*c}i + ${b*d}i²\n= ${a*c} + ${a*d + b*c}i - ${b*d}\n= ${answer}`;
+                solution = `Multiply: (${a})(${c}) + (${a})(${d}i) + (${b}i)(${c}) + (${b}i)(${d}i)\n= ${a*c} + ${a*d}i + ${b*c}i + ${b*d}i²\n= ${a*c} + ${a*d + b*c}i - ${b*d}\n= ${answer}`;
             } else if (operation === 'divide') {
                 const z1 = formatComplexNumber(a, b);
                 const z2 = formatComplexNumber(c, d);
@@ -1916,11 +2101,20 @@
 
         // Exploration functions
         function loadExplorationProblem() {
-            const problem = explorationProblems[currentExplorationIndex];
+            const problem = generateExplorationProblem();
             document.getElementById('exploration-problem').innerHTML = problem.problem;
             document.getElementById('rect-approach').innerHTML = problem.rect;
             document.getElementById('polar-approach').innerHTML = problem.polar;
             document.getElementById('approach-feedback').innerHTML = problem.feedback;
+            
+            // Render the problem with KaTeX
+            const problemEl = document.getElementById('exploration-problem');
+            const html = problemEl.innerHTML;
+            problemEl.innerHTML = '';
+            katex.render(html, problemEl, {
+                displayMode: false,
+                throwOnError: false
+            });
             
             // Hide solutions
             document.getElementById('approach-comparison').style.display = 'none';
@@ -1933,7 +2127,6 @@
         }
 
         function nextExplorationProblem() {
-            currentExplorationIndex = (currentExplorationIndex + 1) % explorationProblems.length;
             loadExplorationProblem();
         }
 
