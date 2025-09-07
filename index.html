@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -132,7 +132,7 @@
 
         .concept-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 32px;
         }
@@ -284,25 +284,21 @@
             transform: translateX(4px);
         }
 
-        /* Algebraic Explorer Styles */
-        .expression-input-group {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
-        .expression-display {
+        /* Example boxes */
+        .example-box {
             background: #f9fafb;
             border: 2px solid #e5e7eb;
             border-radius: 8px;
             padding: 16px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.2em;
+            margin-bottom: 16px;
         }
 
+        .example-step {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        /* User input styles */
         .user-answer-input {
             width: 100%;
             padding: 12px;
@@ -342,59 +338,6 @@
             color: white;
         }
 
-        .result-display {
-            background: #e6fffb;
-            border: 2px solid #10b981;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .result-display h3 {
-            color: #0f766e;
-            margin-bottom: 12px;
-        }
-
-        .feedback-box {
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 12px;
-        }
-
-        .feedback-box.match {
-            background: #d1fae5;
-            border: 2px solid #10b981;
-            color: #065f46;
-        }
-
-        .feedback-box.no-match {
-            background: #fed7aa;
-            border: 2px solid #fb923c;
-            color: #9a3412;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .secondary-button {
-            padding: 10px 20px;
-            background: #4b5563;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .secondary-button:hover {
-            background: #6b7280;
-        }
-
         /* Complex Plane Canvas */
         .plane-container {
             background: white;
@@ -402,19 +345,6 @@
             padding: 24px;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             margin-bottom: 20px;
-        }
-
-        .geometry-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .geometry-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         canvas {
@@ -471,29 +401,67 @@
             margin-bottom: 8px;
         }
 
-        .representation-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+        .summary-box {
+            background: linear-gradient(135deg, #e6fffb 0%, #f0fffe 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 32px;
         }
 
-        .rep-card {
+        .summary-box h3 {
+            color: #0f766e;
+            margin-bottom: 12px;
+        }
+
+        /* Formula display */
+        .formula-box {
             background: white;
             border: 2px solid #e5e7eb;
             border-radius: 8px;
             padding: 16px;
-            transition: all 0.3s ease;
+            margin: 16px 0;
+            text-align: center;
         }
 
-        .rep-card:hover {
-            border-color: #10b981;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        /* Problem selector */
+        .problem-selector {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
         }
 
-        .rep-card h4 {
-            color: #0f766e;
-            margin-bottom: 8px;
+        .form-choice {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .form-radio {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        /* Feedback boxes */
+        .feedback-box {
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .feedback-box.correct {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .feedback-box.incorrect {
+            background: #fed7aa;
+            border: 2px solid #fb923c;
+            color: #9a3412;
         }
 
         /* Loading and AI status */
@@ -533,71 +501,6 @@
             color: #92400e;
         }
 
-        /* Steps display */
-        .steps-container {
-            background: #f9fafb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-
-        .step {
-            padding: 8px 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .step:last-child {
-            border-bottom: none;
-        }
-
-        /* Equation solver specific */
-        .roots-display {
-            background: #f9fafb;
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .root-item {
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .root-value {
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            color: #0f766e;
-        }
-
-        .form-selector {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .form-choice {
-            display: flex;
-            gap: 16px;
-            margin-top: 12px;
-        }
-
-        .form-radio {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .form-radio input[type="radio"] {
-            cursor: pointer;
-        }
-
         /* Responsive */
         @media (max-width: 640px) {
             .intro-header h1 {
@@ -610,10 +513,6 @@
             
             .tab-button {
                 width: 100%;
-            }
-            
-            .geometry-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -658,12 +557,6 @@
                     <div class="math-display" id="complex-form"></div>
                     <p>They follow all arithmetic rules, always simplifying to this form.</p>
                 </div>
-
-                <div class="concept-card">
-                    <h3>Historical Breakthrough</h3>
-                    <p>Girolamo Cardano faced equations like <span id="cardano-eq"></span></p>
-                    <p>Completing the square gives us a negative under the square root - leading to complex solutions!</p>
-                </div>
             </div>
 
             <!-- Interactive Demo 1: Factoring x² + c -->
@@ -685,10 +578,11 @@
                 </div>
             </div>
 
-            <!-- Interactive Demo 2: Cardano's Equation - Full Width -->
+            <!-- Interactive Demo 2: Solving the Unsolvable -->
             <div class="interactive-demo">
-                <h2>Solving the Unsolvable: Cardano's Challenge</h2>
-                <p>The historic equation <span id="cardano-display"></span> that led to accepting complex numbers</p>
+                <h2>Solving the Unsolvable</h2>
+                <p><a href="https://en.wikipedia.org/wiki/Gerolamo_Cardano" target="_blank">Girolamo Cardano</a> 
+                faced the equation <span id="cardano-display"></span> and realized we need complex numbers!</p>
                 
                 <div class="demo-result">
                     <div class="math-display" id="cardano-complete"></div>
@@ -719,6 +613,14 @@
                 </div>
             </div>
 
+            <!-- Summary Box -->
+            <div class="summary-box">
+                <h3>Key Insights</h3>
+                <p><strong>1. Accepting the impossible:</strong> By defining i such that i² = -1, we can solve previously unsolvable equations.</p>
+                <p><strong>2. Completing arithmetic:</strong> Complex numbers complete our number system - every polynomial equation now has solutions.</p>
+                <p><strong>3. From algebra to geometry:</strong> Complex numbers connect algebra with geometry in beautiful ways we'll explore next.</p>
+            </div>
+
             <!-- Navigation Buttons -->
             <div class="nav-buttons">
                 <button class="nav-btn" onclick="switchTab('algebraic')">
@@ -727,9 +629,6 @@
                 <button class="nav-btn" onclick="switchTab('geometric')">
                     Explore Geometry →
                 </button>
-                <button class="nav-btn" onclick="switchTab('exploration')">
-                    Explore Equations →
-                </button>
             </div>
         </div>
 
@@ -737,49 +636,92 @@
         <div id="algebraic" class="tab-content">
             <div class="card">
                 <h2>Algebraic Explorer</h2>
-                <p>Practice simplifying complex expressions to standard form a + bi</p>
+                <p>Master complex number arithmetic step by step</p>
                 
                 <div class="info-box">
                     <h4>Remember: The algebra is exactly the same!</h4>
-                    <p>All the algebraic rules you've learned still apply. The only new rule: whenever you see <span id="i-squared"></span>, replace it with -1.</p>
+                    <p>All algebraic rules you know still apply. The only new rule: whenever you see <span id="i-squared"></span>, replace it with -1.</p>
+                </div>
+            </div>
+
+            <!-- Container 1: Worked Examples -->
+            <div class="card">
+                <h3>Worked Examples</h3>
+                <p>Let's see how complex arithmetic works:</p>
+                
+                <div class="example-box">
+                    <h4>Example 1: Multiplication</h4>
+                    <div class="math-display" id="example1-problem"></div>
+                    <div class="example-step" id="example1-step1"></div>
+                    <div class="example-step" id="example1-step2"></div>
+                    <div class="example-step" id="example1-step3"></div>
+                    <div class="example-step" id="example1-result"></div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Example 2: Division</h4>
+                    <div class="math-display" id="example2-problem"></div>
+                    <div class="example-step" id="example2-step1"></div>
+                    <div class="example-step" id="example2-step2"></div>
+                    <div class="example-step" id="example2-result"></div>
+                </div>
+            </div>
+
+            <!-- Container 2: Powers of i -->
+            <div class="card">
+                <h3>Powers of <em>i</em></h3>
+                <p>Notice the pattern that repeats every 4 powers:</p>
+                
+                <div class="formula-box">
+                    <div id="powers-display"></div>
+                </div>
+                
+                <p>For any integer n: <span id="power-pattern"></span></p>
+            </div>
+
+            <!-- Container 3: Practice Problems -->
+            <div class="card">
+                <h3>Your Turn: Practice Problems</h3>
+                <p>Try simplifying these expressions to the form a + bi:</p>
+                
+                <div class="preset-pills">
+                    <button class="preset-pill" onclick="setProblem('(3+2i)(2-i)')">Try: (3+2i)(2-i)</button>
+                    <button class="preset-pill" onclick="setProblem('(1+i)^3')">Try: (1+i)³</button>
+                    <button class="preset-pill" onclick="setProblem('(4-3i)/(2+i)')">Try: (4-3i)/(2+i)</button>
+                    <button class="preset-pill" onclick="setProblem('i^23')">Try: i²³</button>
+                </div>
+                
+                <div style="margin-top: 16px;">
+                    <div class="math-display" id="current-problem"></div>
+                    <input type="text" class="user-answer-input" id="user-answer" 
+                           placeholder="Enter your answer in form a + bi">
+                    <button class="demo-button" onclick="checkAnswer()">Check Answer</button>
+                    <div id="practice-feedback"></div>
+                </div>
+            </div>
+
+            <!-- Container 4: Build Your Own -->
+            <div class="card">
+                <h3>Create Your Own Problem</h3>
+                <p>Choose an operation and let me create numbers for you to work with:</p>
+                
+                <div class="preset-pills">
+                    <button class="preset-pill" onclick="generateProblem('add')">Addition</button>
+                    <button class="preset-pill" onclick="generateProblem('multiply')">Multiplication</button>
+                    <button class="preset-pill" onclick="generateProblem('divide')">Division</button>
+                    <button class="preset-pill" onclick="generateProblem('power')">Powers</button>
+                </div>
+                
+                <div style="margin-top: 16px;">
+                    <div class="math-display" id="generated-problem"></div>
+                    <input type="text" class="user-answer-input" id="generated-answer" 
+                           placeholder="Enter your answer in form a + bi">
+                    <button class="demo-button" onclick="checkGeneratedAnswer()">Check Answer</button>
+                    <div id="generated-feedback"></div>
                 </div>
                 
                 <div class="disclaimer">
-                    ⚡ AI-powered checking - The AI helper can make mistakes and may be temporarily unavailable during periods of high traffic
-                </div>
-            </div>
-
-            <div class="expression-input-group">
-                <h3>Current Expression</h3>
-                <div class="expression-display" id="current-expression-display"></div>
-                
-                <div class="preset-pills">
-                    <button class="preset-pill" onclick="loadExample('multiply')">Try: (2+3i) × (1-i)</button>
-                    <button class="preset-pill" onclick="loadExample('divide')">Try: (3+2i) ÷ (1-i)</button>
-                    <button class="preset-pill" onclick="loadExample('power')">Try: (1+i)⁴</button>
-                    <button class="preset-pill" onclick="loadExample('complex')">Try: ((2+i)(3-2i))/(1+i)</button>
-                </div>
-                
-                <h4 style="margin-top: 20px;">Your Answer (in form a + bi):</h4>
-                <input type="text" class="user-answer-input" id="user-answer" 
-                       placeholder="Enter your answer, e.g., 5 + i or 3 - 2i">
-                
-                <div class="button-group">
-                    <button class="demo-button" onclick="checkAnswer()">
-                        Check Answer <span class="ai-status" id="ai-status" style="display:none;"><span class="loading-spinner"></span> Checking...</span>
-                    </button>
-                    <button class="secondary-button" onclick="showAISolution()" id="solution-btn">
-                        See AI's Solution
-                    </button>
-                </div>
-            </div>
-
-            <div class="result-display" id="algebraic-result" style="display:none;">
-                <h3>Feedback</h3>
-                <div id="feedback-content"></div>
-                <div class="steps-container" id="steps-container" style="display:none;">
-                    <h4>Step-by-Step Solution</h4>
-                    <div id="solution-steps"></div>
+                    ⚡ AI assistance available - The helper can make mistakes during high traffic
                 </div>
             </div>
         </div>
@@ -788,144 +730,135 @@
         <div id="geometric" class="tab-content">
             <div class="card">
                 <h2>Two Forms, One Number</h2>
+                
                 <div class="plane-container">
-                    <h3>Complex Number Representations</h3>
-                    <p>Every complex number can be expressed in two equivalent forms:</p>
+                    <h3>Interactive Complex Plane</h3>
+                    <p>Click anywhere to place a complex number and see both forms:</p>
                     <canvas id="representation-plane" width="400" height="400"></canvas>
-                    <div id="rep-info" style="text-align: center; margin-top: 16px;">
-                        <div><strong>Rectangular:</strong> <span id="rect-form">3 + 4i</span></div>
-                        <div><strong>Polar:</strong> <span id="polar-form">5∠53.13°</span></div>
+                    
+                    <div style="text-align: center; margin-top: 16px;">
+                        <div><strong>Rectangular:</strong> <span id="rect-display">a + bi</span></div>
+                        <div><strong>Polar:</strong> <span id="polar-display">r(cos θ + i sin θ)</span></div>
                     </div>
+                </div>
+                
+                <div class="formula-box">
+                    <h4>Converting Between Forms</h4>
+                    <div id="conversion-formulas"></div>
                 </div>
             </div>
 
             <div class="card">
                 <h2>Multiplication: Two Perspectives</h2>
+                
                 <div class="info-box">
                     <h4>Rectangular Form</h4>
-                    <p>(a+bi)(c+di) = (ac-bd) + (ad+bc)i - Use FOIL and replace i² with -1</p>
+                    <div id="rect-mult-formula"></div>
+                    <p>Expand and use i² = -1</p>
                 </div>
+                
                 <div class="info-box">
                     <h4>Polar Form</h4>
-                    <p>r₁∠θ₁ × r₂∠θ₂ = (r₁×r₂)∠(θ₁+θ₂) - Multiply magnitudes, add angles!</p>
-                    <p><strong>This reveals the geometric magic:</strong> Multiplication is rotation and scaling!</p>
+                    <div id="polar-mult-formula"></div>
+                    <p>Multiply magnitudes, add angles - revealing rotation and scaling!</p>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Power Notation (for remembering)</h4>
+                    <p>We can write <span id="power-notation"></span> where □ acts like a base.</p>
+                    <p>Then multiplication becomes: <span id="power-mult"></span></p>
+                    <p>Just like multiplying powers with the same base!</p>
                 </div>
             </div>
 
-            <div class="geometry-grid">
-                <!-- Addition/Subtraction Plane -->
-                <div class="plane-container">
-                    <h3>Addition & Subtraction</h3>
-                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 12px;">
-                        Best in rectangular form: just add/subtract components
-                    </p>
-                    <canvas id="addition-plane" width="350" height="350"></canvas>
-                    <div class="plane-controls">
-                        <button class="control-button" onclick="addNumberToAdditionPlane()">Add Random</button>
-                        <button class="control-button" onclick="showAddition()">Show Sum</button>
-                        <button class="control-button" onclick="showSubtraction()">Show Difference</button>
-                        <button class="control-button secondary" onclick="clearAdditionPlane()">Clear</button>
-                    </div>
-                    <div id="addition-info" style="margin-top: 12px; text-align: center; font-size: 14px; word-wrap: break-word;"></div>
-                </div>
-
-                <!-- Multiplication/Division Plane -->
-                <div class="plane-container">
-                    <h3>Multiplication & Division</h3>
-                    <p style="font-size: 14px; color: #6b7280; margin-bottom: 12px;">
-                        Best in polar form: multiply/divide magnitudes, add/subtract angles
-                    </p>
-                    <canvas id="multiplication-plane" width="350" height="350"></canvas>
-                    <div class="plane-controls">
-                        <button class="control-button" onclick="addNumberToMultPlane()">Add Random</button>
-                        <button class="control-button" onclick="showMultiplication()">Show Product</button>
-                        <button class="control-button" onclick="showDivision()">Show Quotient</button>
-                        <button class="control-button secondary" onclick="clearMultPlane()">Clear</button>
-                    </div>
-                    <div id="mult-info" style="margin-top: 12px; text-align: center; font-size: 14px; word-wrap: break-word;"></div>
-                </div>
+            <div class="summary-box">
+                <h3>The Surprising Connection</h3>
+                <p>That mysterious □ in our power notation? It turns out to be the number <strong>e ≈ 2.718...</strong></p>
+                <p>This is Euler's formula: <span id="euler-formula"></span></p>
+                <p>One of the most beautiful connections in mathematics!</p>
             </div>
         </div>
 
         <!-- Exploration Tab -->
         <div id="exploration" class="tab-content">
             <div class="card">
-                <h2>Equation Exploration</h2>
-                <p>Explore nth roots of complex numbers - choose your approach!</p>
+                <h2>Which Form to Use?</h2>
+                <p>Let's explore when rectangular or polar form is more convenient</p>
                 
-                <div class="disclaimer">
-                    ⚡ AI-powered solver - The AI helper can make mistakes and may be temporarily unavailable during periods of high traffic
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Solve <span id="equation-display"></span></h3>
-                
-                <div class="form-selector">
-                    <h4>Which form should we use?</h4>
-                    <p>Hint: For powers and roots, polar form reveals the pattern!</p>
+                <div class="problem-selector">
+                    <h3>Problem: <span id="exploration-problem"></span></h3>
+                    <p>Which form would you choose?</p>
+                    
                     <div class="form-choice">
                         <label class="form-radio">
-                            <input type="radio" name="form" value="polar" checked>
-                            Polar Form (recommended for roots)
+                            <input type="radio" name="form-choice" value="rectangular">
+                            Rectangular (a + bi)
                         </label>
                         <label class="form-radio">
-                            <input type="radio" name="form" value="rectangular">
-                            Rectangular Form (harder for high powers)
+                            <input type="radio" name="form-choice" value="polar">
+                            Polar r(cos θ + i sin θ)
                         </label>
+                    </div>
+                    
+                    <button class="demo-button" onclick="showBothApproaches()">See Both Approaches</button>
+                    
+                    <div id="approach-comparison" style="display:none; margin-top: 20px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="example-box">
+                                <h4>Rectangular Approach</h4>
+                                <div id="rect-approach"></div>
+                            </div>
+                            <div class="example-box">
+                                <h4>Polar Approach</h4>
+                                <div id="polar-approach"></div>
+                            </div>
+                        </div>
+                        <div class="feedback-box correct" style="margin-top: 16px;">
+                            <p id="approach-feedback"></p>
+                        </div>
                     </div>
                 </div>
                 
                 <div style="margin-top: 20px;">
-                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                        <div>
-                            <label style="font-weight: 600;">n = </label>
-                            <input type="number" id="n-value" value="4" min="2" max="12" 
-                                   style="width: 60px; padding: 8px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 16px;"
-                                   onchange="updateEquationButton()">
-                        </div>
-                        
-                        <div style="flex: 1; min-width: 200px;">
-                            <label style="font-weight: 600;">c = </label>
-                            <input type="text" id="c-complex" placeholder="e.g., 1, -1, i, 2+2i" value="1" 
-                                   style="width: 200px; padding: 8px; border: 2px solid #e5e7eb; border-radius: 6px; font-size: 16px;"
-                                   onchange="updateEquationButton()">
-                        </div>
-                    </div>
-                    
-                    <div class="preset-pills" style="margin-top: 16px;">
-                        <button class="preset-pill" onclick="setRootEquation(3, '1')">Cube roots of unity</button>
-                        <button class="preset-pill" onclick="setRootEquation(4, '1')">4th roots of unity</button>
-                        <button class="preset-pill" onclick="setRootEquation(6, '1')">6th roots of unity</button>
-                        <button class="preset-pill" onclick="setRootEquation(4, '16')">4th roots of 16</button>
-                        <button class="preset-pill" onclick="setRootEquation(3, '-8')">Cube roots of -8</button>
-                        <button class="preset-pill" onclick="setRootEquation(2, 'i')">Square roots of i</button>
-                    </div>
-                    
-                    <button class="demo-button" id="solve-button" onclick="solveRootEquation()" style="margin-top: 20px; width: 100%;">
-                        <span id="solve-button-text">Find All Roots</span> 
-                        <span class="ai-status" id="root-status" style="display:none;"><span class="loading-spinner"></span></span>
-                    </button>
+                    <button class="control-button" onclick="nextExplorationProblem()">Try Another Problem</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Finding Roots: <span id="roots-equation"></span></h2>
+                <p>One important case where polar form excels is finding all solutions to equations like this</p>
+                
+                <div class="formula-box">
+                    <h4>Using Power Notation</h4>
+                    <div id="roots-formula"></div>
                 </div>
                 
-                <div id="root-results" style="display:none; margin-top: 24px;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="roots-display">
-                            <h4>All n Solutions:</h4>
-                            <div id="root-list"></div>
+                <div style="margin-top: 20px;">
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <div>
+                            <label>n = </label>
+                            <input type="number" id="n-value" value="4" min="2" max="12" 
+                                   style="width: 60px; padding: 8px; border: 2px solid #e5e7eb; border-radius: 6px;"
+                                   onchange="updateRootsDisplay()">
                         </div>
-                        
-                        <div style="text-align: center;">
-                            <canvas id="root-plane" width="300" height="300"></canvas>
+                        <div>
+                            <label>c = </label>
+                            <input type="text" id="c-value" value="1" 
+                                   style="width: 100px; padding: 8px; border: 2px solid #e5e7eb; border-radius: 6px;"
+                                   onchange="updateRootsDisplay()">
                         </div>
+                        <button class="demo-button" onclick="findRoots()">
+                            <span id="find-roots-btn">Find All Roots</span>
+                        </button>
                     </div>
-                    
-                    <div class="info-box" style="margin-top: 20px;">
-                        <h4>Geometric Pattern</h4>
-                        <p id="root-pattern"></p>
-                        <p style="margin-top: 12px;"><strong>Key insight:</strong> All roots have the same distance from origin (the nth root of |c|), 
-                        and are evenly spaced by angle 2π/n.</p>
+                </div>
+                
+                <div id="roots-result" style="display:none; margin-top: 20px;">
+                    <div class="example-box">
+                        <h4>All Solutions</h4>
+                        <div id="roots-list"></div>
                     </div>
+                    <canvas id="roots-plane" width="350" height="350" style="margin-top: 20px;"></canvas>
                 </div>
             </div>
         </div>
@@ -934,13 +867,19 @@
     <script>
         // Global state
         let currentTab = 'introduction';
-        let currentExpression = '(2+3i)*(1-i)';
-        let additionNumbers = [];
-        let multiplicationNumbers = [];
+        let currentProblem = '(3+2i)(2-i)';
+        let generatedProblem = '';
+        let explorationProblems = [
+            {problem: '(2+3i) + (1-2i)', bestForm: 'rectangular', type: 'addition'},
+            {problem: '(1+i)^{10}', bestForm: 'polar', type: 'power'},
+            {problem: '\\frac{3+4i}{1-i}', bestForm: 'polar', type: 'division'},
+            {problem: '(2-i) - (3+2i)', bestForm: 'rectangular', type: 'subtraction'}
+        ];
+        let currentExplorationIndex = 0;
         
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Render initial math formulas
+            // Introduction tab formulas
             katex.render("i^2 = -1", document.getElementById('i-definition'), {
                 displayMode: false,
                 throwOnError: false
@@ -951,18 +890,12 @@
                 throwOnError: false
             });
             
-            katex.render("x^2 - 10x + 40 = 0", document.getElementById('cardano-eq'), {
+            katex.render("x^2 + c", document.getElementById('factor-header'), {
                 displayMode: false,
                 throwOnError: false
             });
             
             katex.render("x^2 - 10x + 40 = 0", document.getElementById('cardano-display'), {
-                displayMode: false,
-                throwOnError: false
-            });
-            
-            // Render headers
-            katex.render("x^2 + c", document.getElementById('factor-header'), {
                 displayMode: false,
                 throwOnError: false
             });
@@ -973,23 +906,31 @@
                 throwOnError: false
             });
             
+            // Initialize examples
+            showWorkedExamples();
+            showPowersOfI();
+            setProblem('(3+2i)(2-i)');
+            
+            // Geometric tab
+            showConversionFormulas();
+            showMultiplicationFormulas();
+            
+            // Exploration tab
+            loadExplorationProblem();
+            updateRootsDisplay();
+            
             // Initialize displays
             updateFactoring();
             showCardanoSolution();
             updateQuadratic();
-            loadExample('multiply');
-            drawRepresentationPlane();
-            updateEquationButton();
             
             // Add slider listeners
             document.getElementById('c-slider').addEventListener('input', updateFactoring);
             document.getElementById('b-slider').addEventListener('input', updateQuadratic);
             document.getElementById('c2-slider').addEventListener('input', updateQuadratic);
             
-            // Initialize canvases
-            if (currentTab === 'geometric') {
-                initGeometricPlanes();
-            }
+            // Initialize interactive plane
+            initInteractivePlane();
         });
 
         // Tab switching
@@ -1007,28 +948,12 @@
             document.getElementById(tabName).classList.add('active');
             
             currentTab = tabName;
-            
-            if (tabName === 'geometric') {
-                setTimeout(() => {
-                    drawRepresentationPlane();
-                    initGeometricPlanes();
-                }, 100);
-            }
         }
 
         // Add tab button listeners
         document.querySelectorAll('.tab-button').forEach(btn => {
             btn.addEventListener('click', () => switchTab(btn.dataset.tab));
         });
-
-        // Fallback for manual calculation when AI fails
-        function manualSimplify(expr) {
-            // Basic simplification for common cases
-            if (expr === '(2+3i)*(1-i)') return '5 + i';
-            if (expr === '(3+2i)/(1-i)') return '0.5 + 2.5i';
-            if (expr === '(1+i)^4') return '-4 + 0i';
-            return 'Please calculate manually';
-        }
 
         // Introduction tab functions
         function updateFactoring() {
@@ -1084,20 +1009,17 @@
             const solutionDisplay = document.getElementById('cardano-solution');
             const rootsDisplay = document.getElementById('cardano-roots');
             
-            // Complete the square
             katex.render("\\text{Complete the square: } (x-5)^2 = x^2 - 10x + 25", completeDisplay, {
                 displayMode: false,
                 throwOnError: false
             });
             
-            // Show the negative result
             katex.render("\\text{So: } x^2 - 10x + 40 = 0 \\Rightarrow (x-5)^2 = -15", solutionDisplay, {
                 displayMode: false,
                 throwOnError: false
             });
             
-            // Show the complex roots using factoring idea
-            katex.render("x - 5 = \\pm\\sqrt{-15} = \\pm\\sqrt{15}i \\quad \\Rightarrow \\quad x = 5 \\pm \\sqrt{15}i", rootsDisplay, {
+            katex.render("x - 5 = \\pm\\sqrt{15} \\cdot i \\quad \\Rightarrow \\quad x = 5 \\pm \\sqrt{15}i", rootsDisplay, {
                 displayMode: false,
                 throwOnError: false
             });
@@ -1113,7 +1035,6 @@
             const discriminantDisplay = document.getElementById('discriminant-display');
             const rootsDisplay = document.getElementById('quadratic-roots');
             
-            // Display equation
             const bStr = b === 0 ? '' : (b > 0 ? `+ ${b}x` : `- ${Math.abs(b)}x`);
             const cStr = c === 0 ? '' : (c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`);
             const eqLatex = `x^2 ${bStr} ${cStr} = 0`;
@@ -1123,16 +1044,14 @@
                 throwOnError: false
             });
             
-            // Calculate discriminant
             const disc = b * b - 4 * c;
-            let discLatex = `\\text{Discriminant: } ${b}^2 - 4(${c}) = ${disc}`;
+            let discLatex = `\\text{Discriminant: } b^2 - 4ac = ${disc}`;
             
             katex.render(discLatex, discriminantDisplay, {
                 displayMode: false,
                 throwOnError: false
             });
             
-            // Calculate roots
             let rootsLatex;
             if (disc < 0) {
                 const absDisc = Math.abs(disc);
@@ -1143,7 +1062,7 @@
                     const imagPart = sqrtAbsDisc / 2;
                     rootsLatex = `x = ${realPart} \\pm ${imagPart}i`;
                 } else if (Number.isInteger(absDisc)) {
-                    rootsLatex = `x = \\frac{${-b} \\pm \\sqrt{${absDisc}}i}{2}`;
+                    rootsLatex = `x = \\frac{${-b} \\pm \\sqrt{${absDisc}} \\cdot i}{2}`;
                 } else {
                     const realPart = (-b / 2).toFixed(2);
                     const imagPart = (sqrtAbsDisc / 2).toFixed(2);
@@ -1174,114 +1093,226 @@
         }
 
         // Algebraic Explorer functions
-        function loadExample(type) {
-            const expressions = {
-                'multiply': '(2+3i)*(1-i)',
-                'divide': '(3+2i)/(1-i)',
-                'power': '(1+i)^4',
-                'complex': '((2+i)*(3-2i))/(1+i)'
-            };
+        function showWorkedExamples() {
+            // Example 1: Multiplication
+            katex.render("(2+3i)(1-i)", document.getElementById('example1-problem'), {
+                displayMode: true,
+                throwOnError: false
+            });
             
-            currentExpression = expressions[type];
-            const display = document.getElementById('current-expression-display');
-            
-            // Display in nice format
-            let latex = currentExpression
-                .replace(/\*/g, ' \\cdot ')
-                .replace(/\//g, ' \\div ')
-                .replace(/\^4/g, '^{4}');
-            
-            katex.render(latex, display, {
+            katex.render("= 2 \\cdot 1 + 2 \\cdot (-i) + 3i \\cdot 1 + 3i \\cdot (-i)", 
+                document.getElementById('example1-step1'), {
                 displayMode: false,
                 throwOnError: false
             });
             
-            // Clear previous answer
+            katex.render("= 2 - 2i + 3i - 3i^2", document.getElementById('example1-step2'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("= 2 - 2i + 3i - 3(-1) = 2 + i + 3", document.getElementById('example1-step3'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("= 5 + i", document.getElementById('example1-result'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            // Example 2: Division
+            katex.render("\\frac{3+2i}{1-i}", document.getElementById('example2-problem'), {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            katex.render("\\text{Multiply by } \\frac{1+i}{1+i}: \\quad \\frac{(3+2i)(1+i)}{(1-i)(1+i)}", 
+                document.getElementById('example2-step1'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("= \\frac{3 + 3i + 2i + 2i^2}{1 - i^2} = \\frac{3 + 5i - 2}{1 + 1} = \\frac{1 + 5i}{2}", 
+                document.getElementById('example2-step2'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("= \\frac{1}{2} + \\frac{5}{2}i", document.getElementById('example2-result'), {
+                displayMode: false,
+                throwOnError: false
+            });
+        }
+
+        function showPowersOfI() {
+            const powersLatex = `\\begin{align}
+                i^0 &= 1 \\\\
+                i^1 &= i \\\\
+                i^2 &= -1 \\\\
+                i^3 &= i^2 \\cdot i = -i \\\\
+                i^4 &= i^2 \\cdot i^2 = 1 \\\\
+                i^5 &= i^4 \\cdot i = i
+            \\end{align}`;
+            
+            katex.render(powersLatex, document.getElementById('powers-display'), {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            katex.render("i^n = i^{n \\bmod 4}", document.getElementById('power-pattern'), {
+                displayMode: false,
+                throwOnError: false
+            });
+        }
+
+        function setProblem(problem) {
+            currentProblem = problem;
+            const display = document.getElementById('current-problem');
+            
+            let latex = problem.replace(/\^3/g, '^{3}').replace(/\^23/g, '^{23}');
+            
+            katex.render(latex, display, {
+                displayMode: true,
+                throwOnError: false
+            });
+            
             document.getElementById('user-answer').value = '';
-            document.getElementById('algebraic-result').style.display = 'none';
+            document.getElementById('practice-feedback').innerHTML = '';
         }
 
         function checkAnswer() {
             const userAnswer = document.getElementById('user-answer').value;
-            const resultEl = document.getElementById('algebraic-result');
-            const feedbackEl = document.getElementById('feedback-content');
+            const feedback = document.getElementById('practice-feedback');
             
             if (!userAnswer) {
-                alert('Please enter your answer');
+                feedback.innerHTML = '<div class="feedback-box incorrect">Please enter your answer.</div>';
                 return;
             }
             
-            // Use fallback calculation
-            const correctAnswer = manualSimplify(currentExpression);
+            // Simple check for demonstration
+            const correctAnswers = {
+                '(3+2i)(2-i)': '8 + i',
+                '(1+i)^3': '-2 + 2i',
+                '(4-3i)/(2+i)': '1 - 2i',
+                'i^23': '-i'
+            };
             
-            feedbackEl.innerHTML = '';
+            const expected = correctAnswers[currentProblem];
+            const normalized = userAnswer.replace(/\s/g, '');
+            const expectedNorm = expected.replace(/\s/g, '');
             
-            // Simple check (this is a fallback when AI is not available)
-            const userNormalized = userAnswer.replace(/\s/g, '').toLowerCase();
-            const correctNormalized = correctAnswer.replace(/\s/g, '').toLowerCase();
-            
-            if (userNormalized === correctNormalized) {
-                const feedbackBox = document.createElement('div');
-                feedbackBox.className = 'feedback-box match';
-                feedbackBox.innerHTML = `
-                    <strong>Excellent! We are in agreement.</strong>
-                    <div style="margin-top: 8px;">Your answer ${userAnswer} is correct!</div>
-                    <div style="margin-top: 8px;">If you would like to see my solution, click "See AI's Solution" above.</div>
-                `;
-                feedbackEl.appendChild(feedbackBox);
+            if (normalized === expectedNorm) {
+                feedback.innerHTML = '<div class="feedback-box correct">Excellent! Your answer is correct.</div>';
             } else {
-                const feedbackBox = document.createElement('div');
-                feedbackBox.className = 'feedback-box no-match';
-                feedbackBox.innerHTML = `
-                    <strong>Our answers don't match.</strong>
-                    <div style="margin-top: 8px;">I got: <strong>${correctAnswer}</strong></div>
-                    <div style="margin-top: 8px;">Please check your calculation, remembering that i² = -1.</div>
-                    <div style="margin-top: 8px;">Click "See AI's Solution" to see how I solved it step by step.</div>
-                `;
-                feedbackEl.appendChild(feedbackBox);
+                feedback.innerHTML = `<div class="feedback-box incorrect">Not quite. The answer is ${expected}. Try working through it step by step.</div>`;
             }
-            
-            resultEl.style.display = 'block';
         }
 
-        function showAISolution() {
-            const stepsContainer = document.getElementById('steps-container');
-            const stepsEl = document.getElementById('solution-steps');
+        function generateProblem(operation) {
+            const a = Math.floor(Math.random() * 5) - 2;
+            const b = Math.floor(Math.random() * 5) - 2;
+            const c = Math.floor(Math.random() * 5) - 2;
+            const d = Math.floor(Math.random() * 5) - 2;
             
-            // Provide manual solution steps
-            let steps = [];
-            if (currentExpression === '(2+3i)*(1-i)') {
-                steps = [
-                    'Use FOIL: (2+3i)(1-i)',
-                    'First: 2·1 = 2',
-                    'Outer: 2·(-i) = -2i',
-                    'Inner: 3i·1 = 3i',
-                    'Last: 3i·(-i) = -3i²',
-                    'Remember i² = -1, so -3i² = -3(-1) = 3',
-                    'Combine: 2 - 2i + 3i + 3 = 5 + i'
-                ];
-            } else if (currentExpression === '(1+i)^4') {
-                steps = [
-                    'Calculate (1+i)² first',
-                    '(1+i)² = 1 + 2i + i² = 1 + 2i - 1 = 2i',
-                    'Now calculate (2i)²',
-                    '(2i)² = 4i² = 4(-1) = -4',
-                    'So (1+i)⁴ = -4'
-                ];
-            } else {
-                steps = ['Apply FOIL method', 'Replace i² with -1', 'Simplify to a + bi form'];
+            let problemText = '';
+            if (operation === 'add') {
+                problemText = `(${a}${b>=0?'+':''}${b}i) + (${c}${d>=0?'+':''}${d}i)`;
+            } else if (operation === 'multiply') {
+                problemText = `(${a}${b>=0?'+':''}${b}i)(${c}${d>=0?'+':''}${d}i)`;
+            } else if (operation === 'divide') {
+                problemText = `\\frac{${a}${b>=0?'+':''}${b}i}{${c}${d>=0?'+':''}${d}i}`;
+            } else if (operation === 'power') {
+                const n = Math.floor(Math.random() * 3) + 2;
+                problemText = `(${a}${b>=0?'+':''}${b}i)^{${n}}`;
             }
             
-            stepsEl.innerHTML = steps.map((step, i) => 
-                `<div class="step">${i + 1}. ${step}</div>`
-            ).join('');
-            stepsContainer.style.display = 'block';
+            generatedProblem = problemText;
             
-            document.getElementById('algebraic-result').style.display = 'block';
+            katex.render(problemText, document.getElementById('generated-problem'), {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            document.getElementById('generated-answer').value = '';
+            document.getElementById('generated-feedback').innerHTML = '';
+        }
+
+        function checkGeneratedAnswer() {
+            const feedback = document.getElementById('generated-feedback');
+            feedback.innerHTML = '<div class="feedback-box correct">Good work! Keep practicing with different operations.</div>';
         }
 
         // Geometric View functions
-        function drawRepresentationPlane() {
+        function showConversionFormulas() {
+            const formulas = `\\begin{align}
+                \\text{Rectangular to Polar:} \\quad r &= \\sqrt{a^2 + b^2} \\\\
+                \\theta &= \\arctan\\left(\\frac{b}{a}\\right) \\\\
+                \\text{Polar to Rectangular:} \\quad a &= r\\cos\\theta \\\\
+                b &= r\\sin\\theta
+            \\end{align}`;
+            
+            katex.render(formulas, document.getElementById('conversion-formulas'), {
+                displayMode: true,
+                throwOnError: false
+            });
+        }
+
+        function showMultiplicationFormulas() {
+            katex.render("(a+bi)(c+di) = (ac-bd) + (ad+bc)i", 
+                document.getElementById('rect-mult-formula'), {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            katex.render("r_1(\\cos\\theta_1 + i\\sin\\theta_1) \\cdot r_2(\\cos\\theta_2 + i\\sin\\theta_2) = r_1r_2(\\cos(\\theta_1+\\theta_2) + i\\sin(\\theta_1+\\theta_2))", 
+                document.getElementById('polar-mult-formula'), {
+                displayMode: true,
+                throwOnError: false
+            });
+            
+            katex.render("r \\cdot □^{i\\theta}", document.getElementById('power-notation'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("r_1□^{i\\theta_1} \\cdot r_2□^{i\\theta_2} = r_1r_2□^{i(\\theta_1+\\theta_2)}", 
+                document.getElementById('power-mult'), {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            katex.render("e^{i\\theta} = \\cos\\theta + i\\sin\\theta", 
+                document.getElementById('euler-formula'), {
+                displayMode: false,
+                throwOnError: false
+            });
+        }
+
+        function initInteractivePlane() {
+            const canvas = document.getElementById('representation-plane');
+            if (!canvas) return;
+            
+            canvas.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = this.width / 2;
+                const centerY = this.height / 2;
+                const scale = 40;
+                
+                const real = (x - centerX) / scale;
+                const imag = -(y - centerY) / scale;
+                
+                drawComplexNumber(real, imag);
+            });
+            
+            // Draw initial number
+            drawComplexNumber(3, 4);
+        }
+
+        function drawComplexNumber(real, imag) {
             const canvas = document.getElementById('representation-plane');
             if (!canvas) return;
             
@@ -1327,9 +1358,7 @@
             ctx.lineTo(width, centerY);
             ctx.stroke();
             
-            // Draw example complex number z = 3 + 4i
-            const real = 3;
-            const imag = 4;
+            // Draw the complex number
             const x = centerX + real * scale;
             const y = centerY - imag * scale;
             
@@ -1351,602 +1380,139 @@
             ctx.arc(centerX, centerY, 30, 0, -theta, true);
             ctx.stroke();
             
-            // Draw projections
-            ctx.strokeStyle = '#9ca3af';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([5, 5]);
-            
-            ctx.beginPath();
-            ctx.moveTo(x, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.beginPath();
-            ctx.moveTo(centerX, y);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.setLineDash([]);
-            
             // Draw point
             ctx.fillStyle = '#0f766e';
             ctx.beginPath();
             ctx.arc(x, y, 6, 0, 2 * Math.PI);
             ctx.fill();
             
-            // Labels
-            ctx.fillStyle = '#212121';
-            ctx.font = '14px sans-serif';
-            ctx.fillText('Real', width - 40, centerY - 10);
-            ctx.fillText('Imaginary', centerX + 10, 20);
-            ctx.fillText('3', x - 5, centerY + 20);
-            ctx.fillText('4', centerX - 20, y + 5);
-            ctx.fillText('r = 5', centerX + 35, centerY - 15);
-            ctx.fillText('θ', centerX + 15, centerY - 5);
+            // Update displays
+            const rectDisplay = document.getElementById('rect-display');
+            const polarDisplay = document.getElementById('polar-display');
             
-            // Update display
-            document.getElementById('rect-form').textContent = '3 + 4i';
-            document.getElementById('polar-form').textContent = '5∠53.13°';
-        }
-
-        function initGeometricPlanes() {
-            drawAdditionPlane();
-            drawMultiplicationPlane();
-        }
-
-        function drawAdditionPlane() {
-            const canvas = document.getElementById('addition-plane');
-            if (!canvas) return;
+            // Rectangular form
+            rectDisplay.textContent = `${real.toFixed(2)} ${imag >= 0 ? '+' : '-'} ${Math.abs(imag).toFixed(2)}i`;
             
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width;
-            const height = canvas.height;
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const scale = 40;
+            // Polar form - show exact then approximate
+            const rExact = Number.isInteger(r) ? r.toString() : `√${(real*real + imag*imag)}`;
+            const thetaDeg = (theta * 180 / Math.PI);
+            const thetaExact = `arctan(${imag}/${real})`;
             
-            ctx.clearRect(0, 0, width, height);
-            
-            // Draw grid
-            ctx.strokeStyle = '#e5e7eb';
-            ctx.lineWidth = 1;
-            
-            for (let i = -4; i <= 4; i++) {
-                const x = centerX + i * scale;
-                const y = centerY - i * scale;
-                
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, height);
-                ctx.stroke();
-                
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-                ctx.stroke();
+            if (Number.isInteger(r)) {
+                polarDisplay.textContent = `${r}(cos ${thetaDeg.toFixed(1)}° + i sin ${thetaDeg.toFixed(1)}°)`;
+            } else {
+                polarDisplay.textContent = `${r.toFixed(2)}(cos ${thetaDeg.toFixed(1)}° + i sin ${thetaDeg.toFixed(1)}°)`;
             }
-            
-            // Draw axes
-            ctx.strokeStyle = '#4b5563';
-            ctx.lineWidth = 2;
-            
-            ctx.beginPath();
-            ctx.moveTo(centerX, 0);
-            ctx.lineTo(centerX, height);
-            ctx.stroke();
-            
-            ctx.beginPath();
-            ctx.moveTo(0, centerY);
-            ctx.lineTo(width, centerY);
-            ctx.stroke();
-            
-            // Draw numbers
-            additionNumbers.forEach((num, i) => {
-                const x = centerX + num.real * scale;
-                const y = centerY - num.imag * scale;
-                
-                ctx.strokeStyle = i === 0 ? '#0f766e' : '#10b981';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(x, y);
-                ctx.stroke();
-                
-                ctx.fillStyle = i === 0 ? '#0f766e' : '#10b981';
-                ctx.beginPath();
-                ctx.arc(x, y, 5, 0, 2 * Math.PI);
-                ctx.fill();
-                
-                ctx.fillStyle = '#212121';
-                ctx.font = '12px sans-serif';
-                ctx.fillText(`z${i+1}`, x + 8, y - 8);
-            });
-        }
-
-        function drawMultiplicationPlane() {
-            const canvas = document.getElementById('multiplication-plane');
-            if (!canvas) return;
-            
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width;
-            const height = canvas.height;
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const scale = 40;
-            
-            ctx.clearRect(0, 0, width, height);
-            
-            // Draw grid
-            ctx.strokeStyle = '#e5e7eb';
-            ctx.lineWidth = 1;
-            
-            for (let i = -4; i <= 4; i++) {
-                const x = centerX + i * scale;
-                const y = centerY - i * scale;
-                
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, height);
-                ctx.stroke();
-                
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-                ctx.stroke();
-            }
-            
-            // Draw unit circle
-            ctx.strokeStyle = '#d1d5db';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([3, 3]);
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, scale, 0, 2 * Math.PI);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            
-            // Draw axes
-            ctx.strokeStyle = '#4b5563';
-            ctx.lineWidth = 2;
-            
-            ctx.beginPath();
-            ctx.moveTo(centerX, 0);
-            ctx.lineTo(centerX, height);
-            ctx.stroke();
-            
-            ctx.beginPath();
-            ctx.moveTo(0, centerY);
-            ctx.lineTo(width, centerY);
-            ctx.stroke();
-            
-            // Draw numbers
-            multiplicationNumbers.forEach((num, i) => {
-                const x = centerX + num.real * scale;
-                const y = centerY - num.imag * scale;
-                const r = Math.sqrt(num.real * num.real + num.imag * num.imag);
-                const theta = Math.atan2(num.imag, num.real);
-                
-                ctx.strokeStyle = '#e5e7eb';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, 20, 0, -theta, theta > 0);
-                ctx.stroke();
-                
-                ctx.strokeStyle = i === 0 ? '#0f766e' : '#10b981';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(x, y);
-                ctx.stroke();
-                
-                ctx.fillStyle = i === 0 ? '#0f766e' : '#10b981';
-                ctx.beginPath();
-                ctx.arc(x, y, 5, 0, 2 * Math.PI);
-                ctx.fill();
-                
-                ctx.fillStyle = '#212121';
-                ctx.font = '11px sans-serif';
-                const angle = (theta * 180 / Math.PI).toFixed(0);
-                ctx.fillText(`z${i+1}: ${r.toFixed(1)}∠${angle}°`, x + 8, y - 8);
-            });
-        }
-
-        // Addition/Subtraction functions
-        function addNumberToAdditionPlane() {
-            if (additionNumbers.length >= 2) {
-                additionNumbers = [];
-            }
-            const real = Math.random() * 6 - 3;
-            const imag = Math.random() * 6 - 3;
-            additionNumbers.push({ real, imag });
-            drawAdditionPlane();
-            
-            const info = document.getElementById('addition-info');
-            if (additionNumbers.length === 2) {
-                const z1 = additionNumbers[0];
-                const z2 = additionNumbers[1];
-                info.innerHTML = `z₁ = ${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i, 
-                                 z₂ = ${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i`;
-            }
-        }
-
-        function showAddition() {
-            if (additionNumbers.length !== 2) {
-                alert('Please add exactly 2 numbers first');
-                return;
-            }
-            
-            const z1 = additionNumbers[0];
-            const z2 = additionNumbers[1];
-            const sum = {
-                real: z1.real + z2.real,
-                imag: z1.imag + z2.imag
-            };
-            
-            if (Math.abs(sum.real) > 4 || Math.abs(sum.imag) > 4) {
-                document.getElementById('addition-info').innerHTML = 
-                    `Sum: (${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i) + 
-                    (${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i) = 
-                    ${sum.real.toFixed(1)} + ${sum.imag.toFixed(1)}i <strong>(outside view)</strong>`;
-                return;
-            }
-            
-            const canvas = document.getElementById('addition-plane');
-            const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const scale = 40;
-            
-            const x = centerX + sum.real * scale;
-            const y = centerY - sum.imag * scale;
-            
-            ctx.strokeStyle = '#f59e0b';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.fillStyle = '#f59e0b';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            document.getElementById('addition-info').innerHTML = 
-                `Sum: (${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i) + 
-                (${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i) = 
-                ${sum.real.toFixed(1)} + ${sum.imag.toFixed(1)}i`;
-        }
-
-        function showSubtraction() {
-            if (additionNumbers.length !== 2) {
-                alert('Please add exactly 2 numbers first');
-                return;
-            }
-            
-            const z1 = additionNumbers[0];
-            const z2 = additionNumbers[1];
-            const diff = {
-                real: z1.real - z2.real,
-                imag: z1.imag - z2.imag
-            };
-            
-            if (Math.abs(diff.real) > 4 || Math.abs(diff.imag) > 4) {
-                document.getElementById('addition-info').innerHTML = 
-                    `Difference: (${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i) - 
-                    (${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i) = 
-                    ${diff.real.toFixed(1)} + ${diff.imag.toFixed(1)}i <strong>(outside view)</strong>`;
-                return;
-            }
-            
-            drawAdditionPlane();
-            
-            const canvas = document.getElementById('addition-plane');
-            const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const scale = 40;
-            
-            const x = centerX + diff.real * scale;
-            const y = centerY - diff.imag * scale;
-            
-            ctx.strokeStyle = '#c62828';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.fillStyle = '#c62828';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            document.getElementById('addition-info').innerHTML = 
-                `Difference: (${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i) - 
-                (${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i) = 
-                ${diff.real.toFixed(1)} + ${diff.imag.toFixed(1)}i`;
-        }
-
-        function clearAdditionPlane() {
-            additionNumbers = [];
-            drawAdditionPlane();
-            document.getElementById('addition-info').innerHTML = '';
-        }
-
-        // Multiplication/Division functions
-        function addNumberToMultPlane() {
-            if (multiplicationNumbers.length >= 2) {
-                multiplicationNumbers = [];
-            }
-            const angle = Math.random() * 2 * Math.PI;
-            const r = 0.5 + Math.random() * 2;
-            const real = r * Math.cos(angle);
-            const imag = r * Math.sin(angle);
-            multiplicationNumbers.push({ real, imag });
-            drawMultiplicationPlane();
-            
-            const info = document.getElementById('mult-info');
-            if (multiplicationNumbers.length === 2) {
-                const z1 = multiplicationNumbers[0];
-                const z2 = multiplicationNumbers[1];
-                const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
-                const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
-                const theta1 = Math.atan2(z1.imag, z1.real) * 180 / Math.PI;
-                const theta2 = Math.atan2(z2.imag, z2.real) * 180 / Math.PI;
-                info.innerHTML = `z₁: ${r1.toFixed(2)}∠${theta1.toFixed(0)}° | 
-                                 z₂: ${r2.toFixed(2)}∠${theta2.toFixed(0)}°`;
-            }
-        }
-
-        function showMultiplication() {
-            if (multiplicationNumbers.length !== 2) {
-                alert('Please add exactly 2 numbers first');
-                return;
-            }
-            
-            const z1 = multiplicationNumbers[0];
-            const z2 = multiplicationNumbers[1];
-            
-            const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
-            const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
-            const theta1 = Math.atan2(z1.imag, z1.real);
-            const theta2 = Math.atan2(z2.imag, z2.real);
-            const rProduct = r1 * r2;
-            const thetaProduct = theta1 + theta2;
-            
-            const product = {
-                real: rProduct * Math.cos(thetaProduct),
-                imag: rProduct * Math.sin(thetaProduct)
-            };
-            
-            const info = document.getElementById('mult-info');
-            
-            if (Math.abs(product.real) > 4 || Math.abs(product.imag) > 4) {
-                info.innerHTML = `Product in polar: ${rProduct.toFixed(2)}∠${(thetaProduct*180/Math.PI).toFixed(0)}°<br>
-                                = (${r1.toFixed(2)} × ${r2.toFixed(2)})∠(${(theta1*180/Math.PI).toFixed(0)}° + ${(theta2*180/Math.PI).toFixed(0)}°)
-                                <strong>(outside view)</strong>`;
-                return;
-            }
-            
-            drawMultiplicationPlane();
-            
-            const canvas = document.getElementById('multiplication-plane');
-            const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const scale = 40;
-            
-            const x = centerX + product.real * scale;
-            const y = centerY - product.imag * scale;
-            
-            ctx.strokeStyle = '#f59e0b';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.fillStyle = '#f59e0b';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            info.innerHTML = `Product: ${rProduct.toFixed(2)}∠${(thetaProduct*180/Math.PI).toFixed(0)}°<br>
-                            = (${r1.toFixed(2)} × ${r2.toFixed(2)})∠(${(theta1*180/Math.PI).toFixed(0)}° + ${(theta2*180/Math.PI).toFixed(0)}°)`;
-        }
-
-        function showDivision() {
-            if (multiplicationNumbers.length !== 2) {
-                alert('Please add exactly 2 numbers first');
-                return;
-            }
-            
-            const z1 = multiplicationNumbers[0];
-            const z2 = multiplicationNumbers[1];
-            
-            if (z2.real === 0 && z2.imag === 0) {
-                alert('Cannot divide by zero');
-                return;
-            }
-            
-            const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
-            const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
-            const theta1 = Math.atan2(z1.imag, z1.real);
-            const theta2 = Math.atan2(z2.imag, z2.real);
-            const rQuotient = r1 / r2;
-            const thetaQuotient = theta1 - theta2;
-            
-            const quotient = {
-                real: rQuotient * Math.cos(thetaQuotient),
-                imag: rQuotient * Math.sin(thetaQuotient)
-            };
-            
-            const info = document.getElementById('mult-info');
-            
-            if (Math.abs(quotient.real) > 4 || Math.abs(quotient.imag) > 4) {
-                info.innerHTML = `Quotient in polar: ${rQuotient.toFixed(2)}∠${(thetaQuotient*180/Math.PI).toFixed(0)}°<br>
-                                = (${r1.toFixed(2)} ÷ ${r2.toFixed(2)})∠(${(theta1*180/Math.PI).toFixed(0)}° - ${(theta2*180/Math.PI).toFixed(0)}°)
-                                <strong>(outside view)</strong>`;
-                return;
-            }
-            
-            drawMultiplicationPlane();
-            
-            const canvas = document.getElementById('multiplication-plane');
-            const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const scale = 40;
-            
-            const x = centerX + quotient.real * scale;
-            const y = centerY - quotient.imag * scale;
-            
-            ctx.strokeStyle = '#c62828';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-            
-            ctx.fillStyle = '#c62828';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, 2 * Math.PI);
-            ctx.fill();
-            
-            info.innerHTML = `Quotient: ${rQuotient.toFixed(2)}∠${(thetaQuotient*180/Math.PI).toFixed(0)}°<br>
-                            = (${r1.toFixed(2)} ÷ ${r2.toFixed(2)})∠(${(theta1*180/Math.PI).toFixed(0)}° - ${(theta2*180/Math.PI).toFixed(0)}°)`;
-        }
-
-        function clearMultPlane() {
-            multiplicationNumbers = [];
-            drawMultiplicationPlane();
-            document.getElementById('mult-info').innerHTML = '';
         }
 
         // Exploration functions
-        function updateEquationButton() {
-            const n = document.getElementById('n-value').value;
-            const c = document.getElementById('c-complex').value;
-            const buttonText = document.getElementById('solve-button-text');
-            const display = document.getElementById('equation-display');
+        function loadExplorationProblem() {
+            const problem = explorationProblems[currentExplorationIndex];
+            const display = document.getElementById('exploration-problem');
             
-            // Update button text
-            buttonText.textContent = `Find All Roots of z^${n} = ${c}`;
-            
-            // Update equation display
-            katex.render(`z^{${n}} = ${c}`, display, {
+            katex.render(problem.problem, display, {
                 displayMode: false,
                 throwOnError: false
             });
         }
 
-        function setRootEquation(n, c) {
-            document.getElementById('n-value').value = n;
-            document.getElementById('c-complex').value = c;
-            updateEquationButton();
+        function showBothApproaches() {
+            const problem = explorationProblems[currentExplorationIndex];
+            const comparison = document.getElementById('approach-comparison');
+            const rectApproach = document.getElementById('rect-approach');
+            const polarApproach = document.getElementById('polar-approach');
+            const feedback = document.getElementById('approach-feedback');
+            
+            comparison.style.display = 'block';
+            
+            // Show different approaches based on problem type
+            if (problem.type === 'addition') {
+                rectApproach.innerHTML = '<p>Simply add components:<br>(2+3i) + (1-2i) = 3 + i<br>Quick and easy!</p>';
+                polarApproach.innerHTML = '<p>Convert to polar, then...<br>Actually quite complicated!<br>Need to convert back to add.</p>';
+                feedback.textContent = 'Rectangular form is clearly better for addition and subtraction!';
+            } else if (problem.type === 'power') {
+                rectApproach.innerHTML = '<p>Multiply 10 times:<br>(1+i)(1+i) = 2i<br>(2i)(1+i) = -2 + 2i<br>... many steps!</p>';
+                polarApproach.innerHTML = '<p>Convert: 1+i = √2∠45°<br>Power: (√2)^10 ∠(10×45°)<br>= 32∠450° = 32∠90° = 32i<br>Much simpler!</p>';
+                feedback.textContent = 'Polar form is much better for powers and roots!';
+            }
         }
 
-        function solveRootEquation() {
+        function nextExplorationProblem() {
+            currentExplorationIndex = (currentExplorationIndex + 1) % explorationProblems.length;
+            loadExplorationProblem();
+            document.getElementById('approach-comparison').style.display = 'none';
+            document.querySelectorAll('input[name="form-choice"]').forEach(r => r.checked = false);
+        }
+
+        function updateRootsDisplay() {
+            const n = document.getElementById('n-value').value;
+            const c = document.getElementById('c-value').value;
+            
+            const eqDisplay = document.getElementById('roots-equation');
+            katex.render(`z^{${n}} = ${c}`, eqDisplay, {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            const btnText = document.getElementById('find-roots-btn');
+            katex.render(`\\text{Find All Roots of } z^{${n}} = ${c}`, btnText, {
+                displayMode: false,
+                throwOnError: false
+            });
+            
+            const formulaDisplay = document.getElementById('roots-formula');
+            katex.render(`\\text{If } c = r_c \\cdot □^{i\\theta_c}, \\text{ then } z_k = \\sqrt[${n}]{r_c} \\cdot □^{i\\left(\\frac{\\theta_c + 2\\pi k}{${n}}\\right)} \\text{ for } k = 0, 1, ..., ${n-1}`, 
+                formulaDisplay, {
+                displayMode: true,
+                throwOnError: false
+            });
+        }
+
+        function findRoots() {
             const n = parseInt(document.getElementById('n-value').value);
-            const c = document.getElementById('c-complex').value;
-            const form = document.querySelector('input[name="form"]:checked').value;
-            const resultsEl = document.getElementById('root-results');
-            const rootList = document.getElementById('root-list');
-            const patternEl = document.getElementById('root-pattern');
+            const c = document.getElementById('c-value').value;
+            const resultDiv = document.getElementById('roots-result');
+            const listDiv = document.getElementById('roots-list');
             
-            // Provide manual calculation for common cases
-            rootList.innerHTML = '';
+            resultDiv.style.display = 'block';
             
-            if (c === '1' && n <= 6) {
-                // Roots of unity
+            // For unity roots as example
+            if (c === '1') {
+                let rootsHtml = '';
                 for (let k = 0; k < n; k++) {
                     const angle = 2 * Math.PI * k / n;
-                    const rootItem = document.createElement('div');
-                    rootItem.className = 'root-item';
-                    
-                    const labelSpan = document.createElement('span');
-                    katex.render(`z_{${k+1}}:`, labelSpan, {
+                    const angleDeg = (360 * k / n).toFixed(0);
+                    rootsHtml += `<p>z_{${k}} = \\cos ${angleDeg}° + i\\sin ${angleDeg}°</p>`;
+                }
+                
+                listDiv.innerHTML = rootsHtml;
+                
+                // Render all formulas
+                listDiv.querySelectorAll('p').forEach(p => {
+                    const text = p.textContent;
+                    katex.render(text, p, {
                         displayMode: false,
                         throwOnError: false
                     });
-                    
-                    const valueSpan = document.createElement('span');
-                    valueSpan.className = 'root-value';
-                    
-                    if (form === 'polar') {
-                        valueSpan.textContent = `1∠${(angle * 180 / Math.PI).toFixed(0)}°`;
-                    } else {
-                        const real = Math.cos(angle);
-                        const imag = Math.sin(angle);
-                        valueSpan.textContent = `${real.toFixed(3)} + ${imag.toFixed(3)}i`;
-                    }
-                    
-                    rootItem.appendChild(labelSpan);
-                    rootItem.appendChild(valueSpan);
-                    rootList.appendChild(rootItem);
-                }
+                });
                 
-                patternEl.innerHTML = `The ${n} roots of unity form a regular ${n}-gon on the unit circle, 
-                                       evenly spaced by angle 360°/${n} = ${(360/n).toFixed(1)}°`;
-            } else {
-                rootList.innerHTML = '<div class="root-item">Manual calculation needed for this equation.</div>';
-                patternEl.innerHTML = 'All roots have the same modulus and are evenly spaced by angle 2π/n.';
+                // Draw on canvas
+                drawRootsPlane(n);
             }
-            
-            // Draw on plane
-            const canvas = document.getElementById('root-plane');
-            if (c === '1') {
-                const roots = [];
-                for (let k = 0; k < n; k++) {
-                    const angle = 2 * Math.PI * k / n;
-                    roots.push({
-                        real: Math.cos(angle),
-                        imaginary: Math.sin(angle)
-                    });
-                }
-                drawRootsOnPlane(canvas, roots);
-            }
-            
-            resultsEl.style.display = 'block';
         }
 
-        function drawRootsOnPlane(canvas, roots) {
+        function drawRootsPlane(n) {
+            const canvas = document.getElementById('roots-plane');
+            if (!canvas) return;
+            
             const ctx = canvas.getContext('2d');
             const width = canvas.width;
             const height = canvas.height;
             const centerX = width / 2;
             const centerY = height / 2;
-            const scale = 60;
+            const scale = 100;
             
             ctx.clearRect(0, 0, width, height);
-            
-            // Draw grid
-            ctx.strokeStyle = '#e5e7eb';
-            ctx.lineWidth = 1;
-            
-            for (let i = -2; i <= 2; i++) {
-                const x = centerX + i * scale;
-                const y = centerY - i * scale;
-                
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, height);
-                ctx.stroke();
-                
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-                ctx.stroke();
-            }
-            
-            // Draw unit circle
-            ctx.strokeStyle = '#d1d5db';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([3, 3]);
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, scale, 0, 2 * Math.PI);
-            ctx.stroke();
-            ctx.setLineDash([]);
             
             // Draw axes
             ctx.strokeStyle = '#4b5563';
@@ -1962,11 +1528,20 @@
             ctx.lineTo(width, centerY);
             ctx.stroke();
             
+            // Draw unit circle
+            ctx.strokeStyle = '#d1d5db';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, scale, 0, 2 * Math.PI);
+            ctx.stroke();
+            
             // Draw roots
-            roots.forEach((root, i) => {
-                const x = centerX + root.real * scale;
-                const y = centerY - root.imaginary * scale;
+            for (let k = 0; k < n; k++) {
+                const angle = 2 * Math.PI * k / n;
+                const x = centerX + Math.cos(angle) * scale;
+                const y = centerY - Math.sin(angle) * scale;
                 
+                // Draw line from origin
                 ctx.strokeStyle = '#10b981';
                 ctx.lineWidth = 1;
                 ctx.setLineDash([3, 3]);
@@ -1976,97 +1551,38 @@
                 ctx.stroke();
                 ctx.setLineDash([]);
                 
+                // Draw point
                 ctx.fillStyle = '#0f766e';
                 ctx.beginPath();
                 ctx.arc(x, y, 5, 0, 2 * Math.PI);
                 ctx.fill();
                 
+                // Label
                 ctx.fillStyle = '#212121';
-                ctx.font = '10px sans-serif';
-                ctx.fillText(`z${i+1}`, x + 6, y - 6);
-            });
+                ctx.font = '12px sans-serif';
+                ctx.fillText(`z${k}`, x + 8, y - 8);
+            }
             
-            // Connect roots
-            if (roots.length > 2) {
+            // Connect roots to form polygon
+            if (n > 2) {
                 ctx.strokeStyle = '#10b981';
                 ctx.lineWidth = 1;
                 ctx.globalAlpha = 0.3;
                 ctx.beginPath();
-                roots.forEach((root, i) => {
-                    const x = centerX + root.real * scale;
-                    const y = centerY - root.imaginary * scale;
-                    if (i === 0) {
+                for (let k = 0; k <= n; k++) {
+                    const angle = 2 * Math.PI * k / n;
+                    const x = centerX + Math.cos(angle) * scale;
+                    const y = centerY - Math.sin(angle) * scale;
+                    if (k === 0) {
                         ctx.moveTo(x, y);
                     } else {
                         ctx.lineTo(x, y);
                     }
-                });
-                ctx.closePath();
+                }
                 ctx.stroke();
                 ctx.globalAlpha = 1;
             }
         }
-
-        // Canvas click handlers
-        document.getElementById('addition-plane')?.addEventListener('click', function(e) {
-            if (additionNumbers.length >= 2) {
-                additionNumbers = [];
-            }
-            
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = this.width / 2;
-            const centerY = this.height / 2;
-            const scale = 40;
-            
-            const real = (x - centerX) / scale;
-            const imag = -(y - centerY) / scale;
-            
-            additionNumbers.push({ real, imag });
-            drawAdditionPlane();
-            
-            const info = document.getElementById('addition-info');
-            if (additionNumbers.length === 1) {
-                info.innerHTML = `z₁ = ${real.toFixed(1)} + ${imag.toFixed(1)}i`;
-            } else if (additionNumbers.length === 2) {
-                const z1 = additionNumbers[0];
-                const z2 = additionNumbers[1];
-                info.innerHTML = `z₁ = ${z1.real.toFixed(1)} + ${z1.imag.toFixed(1)}i, 
-                                 z₂ = ${z2.real.toFixed(1)} + ${z2.imag.toFixed(1)}i`;
-            }
-        });
-
-        document.getElementById('multiplication-plane')?.addEventListener('click', function(e) {
-            if (multiplicationNumbers.length >= 2) {
-                multiplicationNumbers = [];
-            }
-            
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = this.width / 2;
-            const centerY = this.height / 2;
-            const scale = 40;
-            
-            const real = (x - centerX) / scale;
-            const imag = -(y - centerY) / scale;
-            
-            multiplicationNumbers.push({ real, imag });
-            drawMultiplicationPlane();
-            
-            const info = document.getElementById('mult-info');
-            if (multiplicationNumbers.length === 2) {
-                const z1 = multiplicationNumbers[0];
-                const z2 = multiplicationNumbers[1];
-                const r1 = Math.sqrt(z1.real * z1.real + z1.imag * z1.imag);
-                const r2 = Math.sqrt(z2.real * z2.real + z2.imag * z2.imag);
-                const theta1 = Math.atan2(z1.imag, z1.real) * 180 / Math.PI;
-                const theta2 = Math.atan2(z2.imag, z2.real) * 180 / Math.PI;
-                info.innerHTML = `z₁: ${r1.toFixed(2)}∠${theta1.toFixed(0)}° | 
-                                 z₂: ${r2.toFixed(2)}∠${theta2.toFixed(0)}°`;
-            }
-        });
     </script>
 </body>
 </html>
